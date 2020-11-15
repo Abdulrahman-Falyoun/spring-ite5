@@ -20,9 +20,10 @@ import java.io.IOException;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.Date;
-import static com.ite5year.authentication.constants.SecurityConstants.EXPIRATION_TIME;
-import static com.ite5year.authentication.constants.SecurityConstants.KEY;
+
 import io.jsonwebtoken.security.Keys;
+
+import static com.ite5year.authentication.constants.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -50,19 +51,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
-                                            org.springframework.security.core.Authentication auth) throws IOException, ServletException {
+                                            org.springframework.security.core.Authentication auth) throws IOException {
 
         Date exp = new Date(System.currentTimeMillis() + EXPIRATION_TIME);
         Key key = Keys.hmacShaKeyFor(KEY.getBytes());
         String userName = ((User) auth.getPrincipal()).getUsername();
-        System.out.println("Logged in user bane: " + userName);
         Claims claims = Jwts.claims().setSubject(userName);
         String token = Jwts.builder().setClaims(claims).signWith(key).setExpiration(exp).compact();
-        System.out.println("Token " + token);
-        res.addHeader("token", token);
-
-        String body = ((User) auth.getPrincipal()).getUsername() + " " + token;
-
+        res.addHeader("token", JWT_TOKEN_PREFIX + " " + token);
+        String body = token;
         res.getWriter().write(body);
         res.getWriter().flush();
     }

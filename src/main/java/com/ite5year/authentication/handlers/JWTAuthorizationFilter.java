@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.ite5year.authentication.constants.SecurityConstants.JWT_HEADER_STRING;
-import static com.ite5year.authentication.constants.SecurityConstants.KEY;
+import static com.ite5year.authentication.constants.SecurityConstants.*;
 
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
@@ -31,7 +30,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                                     FilterChain chain) throws IOException, ServletException {
         String header = request.getHeader(JWT_HEADER_STRING);
 
-        if (header == null) {
+        if (header == null || !header.startsWith(JWT_TOKEN_PREFIX)) {
             chain.doFilter(request, response);
             return;
         }
@@ -43,7 +42,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken authenticate(HttpServletRequest request) {
-        String token = request.getHeader(JWT_HEADER_STRING);
+        String token = request.getHeader(JWT_HEADER_STRING).split(" ")[1];
         if (token != null) {
             Claims user = Jwts.parser()
                     .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
