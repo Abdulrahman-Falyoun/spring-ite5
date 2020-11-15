@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -29,6 +30,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
+        setFilterProcessesUrl("/api/services/controller/user/login");
     }
 
     @Override
@@ -52,10 +54,16 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         Date exp = new Date(System.currentTimeMillis() + EXPIRATION_TIME);
         Key key = Keys.hmacShaKeyFor(KEY.getBytes());
-        Claims claims = Jwts.claims().setSubject(((SecurityProperties.User) auth.getPrincipal()).getName());
-        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, key).setExpiration(exp).compact();
+        String userName = ((User) auth.getPrincipal()).getUsername();
+        System.out.println("Logged in user bane: " + userName);
+        Claims claims = Jwts.claims().setSubject(userName);
+        String token = Jwts.builder().setClaims(claims).signWith(key).setExpiration(exp).compact();
+        System.out.println("Token " + token);
         res.addHeader("token", token);
 
+        String body = ((User) auth.getPrincipal()).getUsername() + " " + token;
 
+        res.getWriter().write(body);
+        res.getWriter().flush();
     }
 }

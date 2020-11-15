@@ -1,7 +1,5 @@
 package com.ite5year.authentication.handlers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ite5year.models.ApplicationUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
