@@ -4,6 +4,7 @@ package com.ite5year.controllers;
 import com.ite5year.models.Car;
 import com.ite5year.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,8 +15,15 @@ import java.util.Optional;
 
 @RestController
 public class CarController {
-    @Autowired private CarRepository carRepository;
+    private CarRepository carRepository;
 
+    public CarRepository getCarRepository() {
+        return carRepository;
+    }
+    @Autowired
+    public void setCarRepository(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     @GetMapping("/cars")
     public List<Car> retrieveAllCars() {
@@ -60,5 +68,12 @@ public class CarController {
         carRepository.save(student);
 
         return ResponseEntity.noContent().build();
+    }
+
+
+    @GetMapping
+    public ResponseEntity reachSecureEndpoint() {
+
+        return new ResponseEntity("If your are reading this you reached a secure endpoint", HttpStatus.OK);
     }
 }
