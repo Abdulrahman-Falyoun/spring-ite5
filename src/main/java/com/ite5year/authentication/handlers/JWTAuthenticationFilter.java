@@ -24,6 +24,7 @@ import java.util.Date;
 import io.jsonwebtoken.security.Keys;
 
 import static com.ite5year.authentication.constants.SecurityConstants.*;
+import static com.ite5year.utils.GlobalConstants.LOGIN_URL;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -31,7 +32,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
-        setFilterProcessesUrl("/api/services/controller/user/login");
+        setFilterProcessesUrl(LOGIN_URL);
     }
 
     @Override
