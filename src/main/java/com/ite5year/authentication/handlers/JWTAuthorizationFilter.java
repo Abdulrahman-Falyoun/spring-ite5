@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static com.ite5year.authentication.constants.SecurityConstants.JWT_HEADER_STRING;
 import static com.ite5year.authentication.constants.SecurityConstants.KEY;
-import static org.springframework.boot.web.servlet.filter.ApplicationContextHeaderFilter.HEADER_NAME;
 
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
@@ -28,7 +29,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader(HEADER_NAME);
+        String header = request.getHeader(JWT_HEADER_STRING);
 
         if (header == null) {
             chain.doFilter(request, response);
@@ -42,7 +43,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken authenticate(HttpServletRequest request) {
-        String token = request.getHeader(HEADER_NAME);
+        String token = request.getHeader(JWT_HEADER_STRING);
         if (token != null) {
             Claims user = Jwts.parser()
                     .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))

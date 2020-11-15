@@ -4,7 +4,6 @@ package com.ite5year.controllers;
 import com.ite5year.models.Car;
 import com.ite5year.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,7 +34,7 @@ public class CarController {
     public Car retrieveCarById(@PathVariable long id) throws Exception {
         Optional<Car> car = carRepository.findById(id);
         if(!car.isPresent()) {
-            throw new Exception("Student with id " + id + " is not found!");
+            throw new Exception("Car with id " + id + " is not found!");
         }
 
         return car.get();
@@ -56,7 +55,7 @@ public class CarController {
     }
 
 
-    @PutMapping("/students/{id}")
+    @PutMapping("/cars/{id}")
     public ResponseEntity<Object> updateStudent(@RequestBody Car student, @PathVariable long id) {
 
         Optional<Car> studentOptional = carRepository.findById(id);
