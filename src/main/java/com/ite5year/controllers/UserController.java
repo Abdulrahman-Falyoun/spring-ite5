@@ -1,6 +1,7 @@
 package com.ite5year.controllers;
 
 
+import com.ite5year.Application;
 import com.ite5year.models.ApplicationUser;
 import com.ite5year.repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
@@ -34,4 +35,26 @@ public class UserController {
         map.put("user", applicationUser);
         return map;
     }
+
+
+    @PostMapping("/login")
+    public HashMap<String, Object> logIn(@RequestBody ApplicationUser applicationUser) {
+        System.out.println("Incoming user: " + applicationUser.toString());
+        HashMap<String, Object> map = new HashMap<>();
+        ApplicationUser user = userRepository.findUserByUsername(applicationUser.getUsername());
+
+        if(bCryptPasswordEncoder.matches(applicationUser.getPassword(), user.getPassword())) {
+            map.put("message", "successfully logged up");
+            map.put("user", user);
+            return map;
+        } else {
+            map.put("message", "failed to log in");
+            map.put("user", applicationUser);
+            return map;
+        }
+    }
+
+
+
+
 }
