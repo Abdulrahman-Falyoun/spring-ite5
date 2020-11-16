@@ -20,17 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/configuration/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/configuration/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthorizationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JWTAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JWTAuthenticationFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/repositories/ApplicationUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/ApplicationUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/ApplicationUserDetailsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +38,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -94,7 +93,7 @@
       <updated>1605348973722</updated>
       <workItem from="1605348975171" duration="7079000" />
       <workItem from="1605423990638" duration="8920000" />
-      <workItem from="1605516300780" duration="3663000" />
+      <workItem from="1605516300780" duration="6450000" />
     </task>
     <servers />
   </component>
@@ -134,50 +133,50 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="743" y="409" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1080@0.0.1920.1080" timestamp="1605350442079" />
-    <state x="621" y="147" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605424973506">
+    <state x="621" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605520201433">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="621" y="147" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605424973506" />
+    <state x="621" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605520201433" />
     <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1605349043187">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605349043187" />
-    <state width="1877" height="322" key="GridCell.Tab.0.bottom" timestamp="1605518702532">
+    <state width="1877" height="322" key="GridCell.Tab.0.bottom" timestamp="1605520116367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702532" />
-    <state width="1877" height="322" key="GridCell.Tab.0.center" timestamp="1605518702531">
+    <state width="1877" height="322" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116367" />
+    <state width="1877" height="322" key="GridCell.Tab.0.center" timestamp="1605520116367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702531" />
-    <state width="1877" height="322" key="GridCell.Tab.0.left" timestamp="1605518702531">
+    <state width="1877" height="322" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116367" />
+    <state width="1877" height="322" key="GridCell.Tab.0.left" timestamp="1605520116367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702531" />
-    <state width="1877" height="322" key="GridCell.Tab.0.right" timestamp="1605518702532">
+    <state width="1877" height="322" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116367" />
+    <state width="1877" height="322" key="GridCell.Tab.0.right" timestamp="1605520116367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702532" />
-    <state width="1877" height="322" key="GridCell.Tab.1.bottom" timestamp="1605518702533">
+    <state width="1877" height="322" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116367" />
+    <state width="1877" height="322" key="GridCell.Tab.1.bottom" timestamp="1605520116368">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702533" />
-    <state width="1877" height="322" key="GridCell.Tab.1.center" timestamp="1605518702532">
+    <state width="1877" height="322" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116368" />
+    <state width="1877" height="322" key="GridCell.Tab.1.center" timestamp="1605520116368">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702532" />
-    <state width="1877" height="322" key="GridCell.Tab.1.left" timestamp="1605518702532">
+    <state width="1877" height="322" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116368" />
+    <state width="1877" height="322" key="GridCell.Tab.1.left" timestamp="1605520116368">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702532" />
-    <state width="1877" height="322" key="GridCell.Tab.1.right" timestamp="1605518702533">
+    <state width="1877" height="322" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116368" />
+    <state width="1877" height="322" key="GridCell.Tab.1.right" timestamp="1605520116368">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605518702533" />
-    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1605519948553">
+    <state width="1877" height="322" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605520116368" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1605521974626">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="490" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605519948553" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605521974626" />
     <state x="461" y="185" key="SettingsEditor" timestamp="1605519893378">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

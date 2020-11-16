@@ -2,7 +2,7 @@ package com.ite5year.authentication.configuration;
 
 import com.ite5year.authentication.handlers.JWTAuthenticationFilter;
 import com.ite5year.authentication.handlers.JWTAuthorizationFilter;
-import com.ite5year.services.ApplicationUserDetailsService;
+import com.ite5year.services.ApplicationUserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,10 +20,10 @@ import static com.ite5year.utils.GlobalConstants.SIGN_UP_URL;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-    final private ApplicationUserDetailsService userDetailsService;
+    final private ApplicationUserDetailsServiceImpl userDetailsService;
     final private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public  WebSecurity(ApplicationUserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public  WebSecurity(ApplicationUserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

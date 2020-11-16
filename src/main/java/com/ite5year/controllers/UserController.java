@@ -1,10 +1,8 @@
 package com.ite5year.controllers;
 
 
-import com.ite5year.Application;
 import com.ite5year.models.ApplicationUser;
-import com.ite5year.repositories.UserRepository;
-import org.springframework.http.ResponseEntity;
+import com.ite5year.repositories.ApplicationUserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +13,12 @@ import static com.ite5year.utils.GlobalConstants.BASE_URL;
 @RestController
 @RequestMapping(BASE_URL + "/user")
 public class UserController {
-    private final UserRepository userRepository;
+    private final ApplicationUserRepository applicationUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserController(UserRepository userRepository,
+    public UserController(ApplicationUserRepository applicationUserRepository,
                           BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
+        this.applicationUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -28,7 +26,7 @@ public class UserController {
     public HashMap<String, Object> signUp(@RequestBody ApplicationUser applicationUser) {
         System.out.println("Incoming user: " + applicationUser.toString());
         applicationUser.setPassword(bCryptPasswordEncoder.encode(applicationUser.getPassword()));
-        userRepository.save(applicationUser);
+        applicationUserRepository.save(applicationUser);
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("message", "successfully signed up");
@@ -41,7 +39,7 @@ public class UserController {
     public HashMap<String, Object> logIn(@RequestBody ApplicationUser applicationUser) {
         System.out.println("Incoming user: " + applicationUser.toString());
         HashMap<String, Object> map = new HashMap<>();
-        ApplicationUser user = userRepository.findUserByUsername(applicationUser.getUsername());
+        ApplicationUser user = applicationUserRepository.findByUsername(applicationUser.getUsername()).get();
 
         if(bCryptPasswordEncoder.matches(applicationUser.getPassword(), user.getPassword())) {
             map.put("message", "successfully logged up");
