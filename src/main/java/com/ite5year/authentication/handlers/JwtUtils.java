@@ -2,6 +2,7 @@ package com.ite5year.authentication.handlers;
 import java.util.Date;
 
 import com.ite5year.services.ApplicationUserDetailsImpl;
+import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,15 +11,12 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.*;
 
+import static com.ite5year.authentication.constants.SecurityConstants.EXPIRATION_TIME;
+import static com.ite5year.authentication.constants.SecurityConstants.KEY;
+
 @Component
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
-
-    @Value("${bezkoder.app.jwtSecret}")
-    private String jwtSecret;
-
-    @Value("${bezkoder.app.jwtExpirationMs}")
-    private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
 
@@ -27,18 +25,18 @@ public class JwtUtils {
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .setExpiration(new Date((new Date()).getTime() + EXPIRATION_TIME))
+                .signWith(Keys.hmacShaKeyFor(KEY.getBytes()))
                 .compact();
     }
 
     public String getUserNameFromJwtToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(KEY).parseClaimsJws(token).getBody().getSubject();
     }
 
     public boolean validateJwtToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+            Jwts.parser().setSigningKey(KEY).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             logger.error("Invalid JWT signature: {}", e.getMessage());

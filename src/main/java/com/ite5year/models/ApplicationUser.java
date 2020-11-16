@@ -43,6 +43,14 @@ public class ApplicationUser implements Serializable {
     public ApplicationUser() {
     }
 
+    /**
+     * INSERT INTO roles(name) VALUES('ROLE_USER');
+     * INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+     * INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+     * @param username
+     * @param email
+     * @param password
+     */
     public ApplicationUser(String username, String email, String password) {
         this.username = username;
         this.email = email;
