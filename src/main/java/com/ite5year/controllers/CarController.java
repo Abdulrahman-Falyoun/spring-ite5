@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
+import static com.ite5year.utils.GlobalConstants.BASE_URL;
+
+@RestController()
+@RequestMapping(BASE_URL + "/cars")
 public class CarController {
     @Resource(name="sharedParametersMap")
     private Map<String, Object> parametersMap;
@@ -29,13 +32,13 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
-    @GetMapping("/cars")
+    @GetMapping
     public List<Car> retrieveAllCars() {
         return carRepository.findAll();
     }
 
 
-    @GetMapping("/cars/{id}")
+    @GetMapping("/{id}")
     public Car retrieveCarById(@PathVariable long id) throws Exception {
         Optional<Car> car = carRepository.findById(id);
         if(!car.isPresent()) {
@@ -46,25 +49,23 @@ public class CarController {
     }
 
 
-    @DeleteMapping("/cars/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCar(@PathVariable long id) {
         carRepository.deleteById(id);
     }
 
 
-    @PostMapping("/car")
-    public ResponseEntity<Object> createNewCar(@RequestBody Car car) {
+    @PostMapping
+    public @ResponseBody  Car createNewCar(@RequestBody Car car) {
         if(car.getSeatsNumber() <= 0) {
             int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
             car.setSeatsNumber(seatsNumber);
         }
-        Car savedCar = carRepository.save(car);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedCar.getId()).toUri();
-        return ResponseEntity.created(location).build();
+        return carRepository.save(car);
     }
 
 
-    @PutMapping("/cars/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateStudent(@RequestBody Car student, @PathVariable long id) {
 
         Optional<Car> studentOptional = carRepository.findById(id);

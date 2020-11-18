@@ -1,14 +1,11 @@
 package com.ite5year.authentication.configuration;
 
-import com.ite5year.Application;
 import com.ite5year.authentication.handlers.AuthEntryPointJwt;
-import com.ite5year.authentication.handlers.JWTAuthenticationFilter;
 import com.ite5year.authentication.handlers.JWTAuthorizationFilter;
 import com.ite5year.services.ApplicationUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,11 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import static com.ite5year.utils.GlobalConstants.SIGN_UP_URL;
 
 @Configuration
 @EnableWebSecurity
