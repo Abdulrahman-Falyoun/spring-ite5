@@ -2,10 +2,11 @@ package com.ite5year.authentication.handlers;
 import java.util.Date;
 
 import com.ite5year.services.ApplicationUserDetailsImpl;
+import com.nimbusds.jwt.JWT;
 import io.jsonwebtoken.security.Keys;
+import org.bouncycastle.math.ec.rfc8032.Ed25519;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -31,12 +32,19 @@ public class JwtUtils {
     }
 
     public String getUserNameFromJwtToken(String token) {
-        return Jwts.parser().setSigningKey(KEY).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser()
+                .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+
     }
 
     public boolean validateJwtToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(KEY).parseClaimsJws(authToken);
+            Jwts.parser()
+                    .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
+                    .parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             logger.error("Invalid JWT signature: {}", e.getMessage());
