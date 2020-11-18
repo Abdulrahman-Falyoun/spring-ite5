@@ -1,15 +1,16 @@
 package com.ite5year.controllers;
 
 
+import com.ite5year.enums.SearchOperation;
 import com.ite5year.models.Car;
+import com.ite5year.models.GenericSpecification;
+import com.ite5year.models.SearchCriteria;
 import com.ite5year.repositories.CarRepository;
+import com.ite5year.services.CarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.annotation.Resource;
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -23,6 +24,24 @@ public class CarController {
     private Map<String, Object> parametersMap;
 
     private CarRepository carRepository;
+    private CarServiceImpl carService;
+
+    public Map<String, Object> getParametersMap() {
+        return parametersMap;
+    }
+
+    public void setParametersMap(Map<String, Object> parametersMap) {
+        this.parametersMap = parametersMap;
+    }
+
+    public CarServiceImpl getCarService() {
+        return carService;
+    }
+
+    @Autowired
+    public void setCarService(CarServiceImpl carService) {
+        this.carService = carService;
+    }
 
     public CarRepository getCarRepository() {
         return carRepository;
@@ -77,5 +96,9 @@ public class CarController {
         carRepository.save(student);
 
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/un-sold")
+    public @ResponseBody List<Car> getAllUnSoldCars() {
+        return carService.findAllUnSoldCar();
     }
 }
