@@ -1,14 +1,13 @@
 package com.ite5year;
 
-import com.ite5year.models.Car;
-import com.ite5year.repositories.CarRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootApplication
 public class Application {
@@ -16,9 +15,9 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	//@Bean
-	// public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		// return new BCryptPasswordEncoder();
-	// }
+	@Bean
+	 public Map<String, Object> sharedParametersMap() {
+		 return new HashMap<>();
+	 }
 
 }
