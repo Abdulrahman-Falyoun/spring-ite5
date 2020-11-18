@@ -8,12 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.Resource;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
 public class CarController {
+    @Resource(name="sharedParametersMap")
+    private Map<String, Object> parametersMap;
+
     private CarRepository carRepository;
 
     public CarRepository getCarRepository() {
@@ -49,6 +54,10 @@ public class CarController {
 
     @PostMapping("/car")
     public ResponseEntity<Object> createNewCar(@RequestBody Car car) {
+        if(car.getSeatsNumber() <= 0) {
+            int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
+            car.setSeatsNumber(seatsNumber);
+        }
         Car savedCar = carRepository.save(car);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedCar.getId()).toUri();
         return ResponseEntity.created(location).build();

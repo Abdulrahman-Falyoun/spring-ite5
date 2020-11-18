@@ -9,8 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 public class Car {
     @Id
@@ -18,10 +17,29 @@ public class Car {
     private Long id;
     private String name;
     private double price;
-    private int seatsNumber = 4;
+    private int seatsNumber;
     private Date dateOfSale;
     private double priceOfSale;
 
+    public Car() {
+    }
+
+    public Car(String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
+        this.name = name;
+        this.price = price;
+        this.seatsNumber = seatsNumber;
+        this.dateOfSale = dateOfSale;
+        this.priceOfSale = priceOfSale;
+    }
+
+    public Car(Long id, String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.seatsNumber = seatsNumber;
+        this.dateOfSale = dateOfSale;
+        this.priceOfSale = priceOfSale;
+    }
 
     public Long getId() {
         return id;
