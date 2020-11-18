@@ -20,11 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/repositories/CarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/repositories/CarRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/SharedParametersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/SharedParametersController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +90,7 @@
       <workItem from="1605423990638" duration="8920000" />
       <workItem from="1605516300780" duration="8035000" />
       <workItem from="1605600969735" duration="1412000" />
-      <workItem from="1605687500428" duration="1088000" />
+      <workItem from="1605687500428" duration="1258000" />
     </task>
     <servers />
   </component>
