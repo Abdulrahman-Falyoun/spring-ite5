@@ -1,21 +1,16 @@
 package com.ite5year.controllers;
 
 
-import com.ite5year.enums.SearchOperation;
-import com.ite5year.models.Car;
-import com.ite5year.models.GenericSpecification;
-import com.ite5year.models.SearchCriteria;
+import com.ite5year.messagingrabbitmq.RabbitMQSender;
+import com.ite5year.models.*;
 import com.ite5year.repositories.CarRepository;
 import com.ite5year.services.CarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -30,7 +25,12 @@ public class CarController {
 
     private CarRepository carRepository;
     private CarServiceImpl carService;
+    RabbitMQSender rabbitMQSender;
 
+    @Autowired
+    public void setRabbitMQSender(RabbitMQSender rabbitMQSender) {
+        this.rabbitMQSender = rabbitMQSender;
+    }
     public Map<String, Object> getParametersMap() {
         return parametersMap;
     }
@@ -110,16 +110,18 @@ public class CarController {
     @GetMapping("/selling-date/{sellingDate}")
     public @ResponseBody List<Car> getAllSoldCarInMonth(@PathVariable String sellingDate) {
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        // Parsing or conversion
         final LocalDateTime dt = LocalDateTime.parse(sellingDate, formatter);
-
-
         try {
             return carService.findAllSoldCardByDate(dt);
         } catch (Exception e) {
             System.out.println("Exc: " + e);
             return null;
         }
+    }
 
+
+    @PostMapping("/report")
+    public RabbitMessage generateReportForCars(@RequestBody RabbitMessage rabbitMessage) {
+        return rabbitMQSender.send(rabbitMessage);
     }
 }

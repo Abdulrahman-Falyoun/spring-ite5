@@ -23,9 +23,9 @@ public class RabbitMQSender {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void send(RabbitMessage rabbitMessage) {
+    public RabbitMessage send(RabbitMessage rabbitMessage) {
         rabbitTemplate.convertAndSend(exchange, routingkey, rabbitMessage);
         System.out.println("Send msg = " + rabbitMessage);
-
+        return rabbitMessage;
     }
 }

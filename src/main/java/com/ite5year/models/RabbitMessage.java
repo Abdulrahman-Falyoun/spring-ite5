@@ -10,10 +10,10 @@ public class RabbitMessage {
 
     private String email;
     private String content;
-    private Date date;
+    private String date;
 
     public RabbitMessage(){}
-    public RabbitMessage(String email, String content, Date date) {
+    public RabbitMessage(String email, String content, String date) {
         this.email = email;
         this.content = content;
         this.date = date;
@@ -36,11 +36,11 @@ public class RabbitMessage {
         this.content = content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
