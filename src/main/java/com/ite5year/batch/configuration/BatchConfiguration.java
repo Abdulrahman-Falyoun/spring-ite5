@@ -82,7 +82,6 @@ public class BatchConfiguration {
 
 
     @Bean
-
     public JdbcBatchItemWriter<Car> writer(final DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Car>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())

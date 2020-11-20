@@ -13,17 +13,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.mail.Multipart;
+import javax.activation.*;
+import javax.mail.*;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
+import javax.sql.DataSource;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class RabbitMQConsumer {
@@ -49,11 +56,33 @@ public class RabbitMQConsumer {
             List<Car> cars = carService.findAllSoldCardByDate(dt);
             System.out.println("Cars: " + cars);
             String content = rabbitMessage.getContent();
-            System.out.println("content: " + content);
 
+            System.out.println("content: " + content);
             try {
-                // MultipartFile multipartFile = new MockMultipartFile("cars.csv", new FileInputStream(new File("cars.csv")));
-                GoogleGmailService.Send("abd.fl.19999@gmail.com", "A3#33$$F", rabbitMessage.getEmail(), "Report", content, null);
+
+
+
+
+
+                FileWriter writer = new FileWriter("sto1.csv");
+                String collect = cars.stream().map(Car::getName).collect(Collectors.joining(","));
+                System.out.println(collect);
+                writer.write(collect);
+                writer.close();
+
+
+
+
+                File file = new File("sto1.csv");
+                MimeBodyPart messageBodyPart = new MimeBodyPart();
+                Multipart multipart = new MimeMultipart();
+                String fileName = "cars.csv";
+                FileDataSource source = new FileDataSource(file);
+                messageBodyPart.setDataHandler(new DataHandler(source));
+                messageBodyPart.setFileName(fileName);
+                multipart.addBodyPart(messageBodyPart);
+
+                GoogleGmailService.Send("abd.fl.19999@gmail.com", "A3#33$$F", rabbitMessage.getEmail(), "Report", content, multipart);
                 System.out.println("Successfully an email is sent");
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());

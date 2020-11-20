@@ -15,7 +15,7 @@ public class GoogleGmailService {
     private GoogleGmailService() {
     }
 
-    public static void Send(final String username, final String password, String recipientEmail, String subjectTitle, String content, MultipartFile file) throws Exception {
+    public static void Send(final String username, final String password, String recipientEmail, String subjectTitle, String content, Multipart file) throws Exception {
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
@@ -39,7 +39,7 @@ public class GoogleGmailService {
             message.setSubject(subjectTitle);
             message.setText(content);
             if(file != null) {
-                message.setContent((Multipart) file);
+                message.setContent(file);
             }
             Transport.send(message);
 
