@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 public class Car {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double price;
@@ -22,6 +22,11 @@ public class Car {
     private double priceOfSale;
 
     public Car() {
+    }
+
+    public Car(String name, double price) {
+        this.name = name;
+        this.price = price;
     }
 
     public Car(String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
@@ -87,5 +92,17 @@ public class Car {
 
     public void setPriceOfSale(double priceOfSale) {
         this.priceOfSale = priceOfSale;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", seatsNumber=" + seatsNumber +
+                ", dateOfSale=" + dateOfSale +
+                ", priceOfSale=" + priceOfSale +
+                '}';
     }
 }
