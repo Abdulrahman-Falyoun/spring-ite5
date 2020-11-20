@@ -20,22 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_batch_javax_batch_api_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jettison_jettison_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_batch_spring_batch_core_4_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_batch_spring_batch_infrastructure_4_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_batch_2_3_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_retry_spring_retry_1_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_rabbitmq_amqp_client_5_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_rabbitmq_http_client_3_2_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_amqp_spring_amqp_2_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_amqp_spring_rabbit_2_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_amqp_spring_rabbit_junit_2_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_amqp_spring_rabbit_test_2_2_10_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_amqp_2_3_3_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_2_8_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-boot.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JwtUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JwtUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/models/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/models/Car.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarFieldSetMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarFieldSetMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarProcessor.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
       <recent name="C:\dev\spring\gs-spring-boot\complete\src\main\java\com\ite5year\controllers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="spring-boot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ite5year.Application" />
@@ -90,6 +90,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MessagingRabbitmqApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ite5year.messagingrabbitmq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ite5year.messagingrabbitmq.MessagingRabbitmqApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MessagingRabbitmqApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -164,38 +182,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605349043187" />
-    <state width="1877" height="462" key="GridCell.Tab.0.bottom" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.0.bottom" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
-    <state width="1877" height="462" key="GridCell.Tab.0.center" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
+    <state width="1877" height="462" key="GridCell.Tab.0.center" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
-    <state width="1877" height="462" key="GridCell.Tab.0.left" timestamp="1605853155261">
+    <state width="1877" height="462" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
+    <state width="1877" height="462" key="GridCell.Tab.0.left" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155261" />
-    <state width="1877" height="462" key="GridCell.Tab.0.right" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
+    <state width="1877" height="462" key="GridCell.Tab.0.right" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
-    <state width="1877" height="462" key="GridCell.Tab.1.bottom" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
+    <state width="1877" height="462" key="GridCell.Tab.1.bottom" timestamp="1605855231409">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
-    <state width="1877" height="462" key="GridCell.Tab.1.center" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231409" />
+    <state width="1877" height="462" key="GridCell.Tab.1.center" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
-    <state width="1877" height="462" key="GridCell.Tab.1.left" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
+    <state width="1877" height="462" key="GridCell.Tab.1.left" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
-    <state width="1877" height="462" key="GridCell.Tab.1.right" timestamp="1605853155262">
+    <state width="1877" height="462" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
+    <state width="1877" height="462" key="GridCell.Tab.1.right" timestamp="1605855231408">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="462" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605853155262" />
+    <state width="1877" height="462" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605855231408" />
     <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1605521974626">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
