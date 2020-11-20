@@ -5,6 +5,8 @@ import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
 
+import java.time.ZoneId;
+
 public class CarFieldSetMapper implements FieldSetMapper<Car> {
     @Override
     public Car mapFieldSet(FieldSet fieldSet) {
@@ -12,7 +14,9 @@ public class CarFieldSetMapper implements FieldSetMapper<Car> {
         car.setName(fieldSet.readString("name"));
         car.setSeatsNumber(fieldSet.readInt("seatsNumber"));
         car.setPrice(fieldSet.readDouble("price"));
-        car.setDateOfSale(fieldSet.readDate("dateOfSale"));
+        car.setDateOfSale(fieldSet.readDate("dateOfSale").toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime());
         car.setPriceOfSale(fieldSet.readDouble("priceOfSale"));
         return car;
     }

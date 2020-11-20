@@ -11,6 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -100,5 +105,21 @@ public class CarController {
     @GetMapping("/un-sold")
     public @ResponseBody List<Car> getAllUnSoldCars() {
         return carService.findAllUnSoldCar();
+    }
+
+    @GetMapping("/selling-date/{sellingDate}")
+    public @ResponseBody List<Car> getAllSoldCarInMonth(@PathVariable String sellingDate) {
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // Parsing or conversion
+        final LocalDateTime dt = LocalDateTime.parse(sellingDate, formatter);
+
+
+        try {
+            return carService.findAllSoldCardByDate(dt);
+        } catch (Exception e) {
+            System.out.println("Exc: " + e);
+            return null;
+        }
+
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.time.ZoneId;
+
 @Component
 public class NotificationListener extends JobExecutionListenerSupport {
     private static final Logger LOGGER = LoggerFactory.getLogger(NotificationListener.class);
@@ -36,7 +38,9 @@ public class NotificationListener extends JobExecutionListenerSupport {
                             rs.getString(1),
                             rs.getDouble(2),
                             rs.getInt(3),
-                            rs.getDate(4),
+                            rs.getDate(4).toInstant()
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime(),
                             rs.getDouble(5))
 
             ).forEach(car -> LOGGER.info("Found <" + car + "> in the database."));

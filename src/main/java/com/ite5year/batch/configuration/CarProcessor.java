@@ -4,6 +4,7 @@ import com.ite5year.models.Car;
 import org.springframework.batch.item.ItemProcessor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CarProcessor implements ItemProcessor<Car, Car> {
@@ -15,7 +16,7 @@ public class CarProcessor implements ItemProcessor<Car, Car> {
         final String name = car.getName();
         final double price = car.getPrice();
         final int seatsNumber = car.getSeatsNumber();
-        final Date dateOfSale = car.getDateOfSale();
+        final LocalDateTime dateOfSale = car.getDateOfSale();
         final double priceOfSale = car.getPriceOfSale();
 
 

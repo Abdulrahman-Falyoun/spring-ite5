@@ -7,6 +7,14 @@ import com.ite5year.models.SearchCriteria;
 import com.ite5year.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CarServiceImpl implements CarService {
@@ -30,6 +38,20 @@ public class CarServiceImpl implements CarService {
         return carRepository.findAll(genericSpecification);
     }
 
+    @Override
+    public List<Car> findAllSoldCardByDate(LocalDateTime date) {
+        List<Car> cars = carRepository.findAll();
+        List<Car> res = new ArrayList<>();
+        for(Car car: cars) {
+            LocalDateTime carDate = car.getDateOfSale();
+            if(carDate.getYear() == date.getYear()) {
+                if(carDate.getMonthValue() <= date.getMonthValue() && carDate.getMonthValue() > (date.getMonthValue() - 1)) {
+                    res.add(car);
+                }
+            }
+        }
+        return res;
+    }
 
     public CarRepository getCarRepository() {
         return carRepository;

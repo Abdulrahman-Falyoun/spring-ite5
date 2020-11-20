@@ -1,13 +1,12 @@
 package com.ite5year.models;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -18,7 +17,7 @@ public class Car {
     private String name;
     private double price;
     private int seatsNumber;
-    private Date dateOfSale;
+    private LocalDateTime dateOfSale;
     private double priceOfSale;
 
     public Car() {
@@ -29,7 +28,7 @@ public class Car {
         this.price = price;
     }
 
-    public Car(String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
+    public Car(String name, double price, int seatsNumber, LocalDateTime dateOfSale, double priceOfSale) {
         this.name = name;
         this.price = price;
         this.seatsNumber = seatsNumber;
@@ -37,7 +36,7 @@ public class Car {
         this.priceOfSale = priceOfSale;
     }
 
-    public Car(Long id, String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
+    public Car(Long id, String name, double price, int seatsNumber, LocalDateTime dateOfSale, double priceOfSale) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -78,11 +77,11 @@ public class Car {
         this.seatsNumber = seatsNumber;
     }
 
-    public Date getDateOfSale() {
+    public LocalDateTime getDateOfSale() {
         return dateOfSale;
     }
 
-    public void setDateOfSale(Date dateOfSale) {
+    public void setDateOfSale(LocalDateTime dateOfSale) {
         this.dateOfSale = dateOfSale;
     }
 
