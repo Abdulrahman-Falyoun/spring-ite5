@@ -1,5 +1,6 @@
 package com.ite5year.services;
 
+import com.ite5year.models.RabbitMessage;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,8 +11,12 @@ import com.ite5year.models.Employee;
 @Service
 public class RabbitMQSenderService {
 
-    @Autowired
     private AmqpTemplate rabbitTemplate;
+
+    @Autowired
+    public void setRabbitTemplate(AmqpTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
     @Value("${ite5year.rabbitmq.exchange}")
     private String exchange;
@@ -19,9 +24,9 @@ public class RabbitMQSenderService {
     @Value("${ite5year.rabbitmq.routingkey}")
     private String routingkey;
 
-    public void send(Employee company) {
-        rabbitTemplate.convertAndSend(exchange, routingkey, company);
-        System.out.println("Send msg = " + company);
+    public void send(RabbitMessage rabbitMessage) {
+        rabbitTemplate.convertAndSend(exchange, routingkey, rabbitMessage);
+        System.out.println("Send msg = " + rabbitMessage);
 
     }
 }

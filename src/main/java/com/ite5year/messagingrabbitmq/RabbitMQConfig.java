@@ -24,20 +24,20 @@ public class RabbitMQConfig {
     @Value("${ite5year.rabbitmq.routingkey}")
     private String routingkey;
 
-//    @Bean
-//    Queue queue() {
-//        return new Queue(queueName, false);
-//    }
+    @Bean
+    Queue queue() {
+        return new Queue(queueName, false);
+    }
 
-//    @Bean
-//    DirectExchange exchange() {
-//        return new DirectExchange(exchange);
-//    }
+    @Bean
+    DirectExchange exchange() {
+        return new DirectExchange(exchange);
+    }
 
-//    @Bean
-//    Binding binding(Queue queue, DirectExchange exchange) {
-//        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
-//    }
+    @Bean
+    Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+    }
 
     @Bean
     public MessageConverter jsonMessageConverter() {
@@ -45,10 +45,10 @@ public class RabbitMQConfig {
     }
 
 
-//    @Bean
-//    public AmqpTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-//        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-//        rabbitTemplate.setMessageConverter(jsonMessageConverter());
-//        return rabbitTemplate;
-//    }
+    @Bean
+    public AmqpTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+        rabbitTemplate.setMessageConverter(jsonMessageConverter());
+        return rabbitTemplate;
+    }
 }
