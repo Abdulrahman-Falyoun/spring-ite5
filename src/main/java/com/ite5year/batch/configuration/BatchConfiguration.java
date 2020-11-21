@@ -50,7 +50,7 @@ public class BatchConfiguration {
     public FlatFileItemReader<Car> reader() {
         return new FlatFileItemReaderBuilder<Car>()
                 .name("carItemReader")
-                .resource(new ClassPathResource("cars.csv"))
+                .resource(new ClassPathResource("cars1.csv"))
                 .delimited()
                 .names("name", "price", "seatsNumber", "dateOfSale", "priceOfSale")
                 .lineMapper(lineMapper())

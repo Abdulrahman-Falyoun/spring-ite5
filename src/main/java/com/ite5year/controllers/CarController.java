@@ -1,6 +1,7 @@
 package com.ite5year.controllers;
 
 
+import com.ite5year.daos.CarDao;
 import com.ite5year.messagingrabbitmq.RabbitMQSender;
 import com.ite5year.models.*;
 import com.ite5year.repositories.CarRepository;
@@ -27,6 +28,9 @@ public class CarController {
     private CarRepository carRepository;
     private CarServiceImpl carService;
     RabbitMQSender rabbitMQSender;
+
+    @Autowired
+    private CarDao carDao;
 
     @Autowired
     public void setRabbitMQSender(RabbitMQSender rabbitMQSender) {
@@ -80,7 +84,7 @@ public class CarController {
     }
 
 
-    @PostMapping
+    @PostMapping("/create")
     public @ResponseBody  Car createNewCar(@RequestBody Car car) throws Exception {
         if(car.getSeatsNumber() <= 0) {
             int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
@@ -93,7 +97,20 @@ public class CarController {
         return carRepository.save(car);
     }
 
-    @Transactional
+
+    @PostMapping("/create/with-optimistic-lock")
+    public @ResponseBody  Car createNewCarWithOptimisticLock(@RequestBody Car car) throws Exception {
+        if(car.getSeatsNumber() <= 0) {
+            int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
+            car.setSeatsNumber(seatsNumber);
+        }
+        if(car.getDateOfSale() != null || car.getPayerName() != null) {
+            throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName()  + "  when you're creating the car");
+        }
+       return carDao.saveCarByJDBC(car);
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateCar(@RequestBody Car car, @PathVariable long id) {
 
@@ -107,31 +124,9 @@ public class CarController {
         return ResponseEntity.noContent().build();
     }
 
-    @Transactional
     @PutMapping("/purchase/{id}")
     public ResponseEntity<Object> purchaseCar(@RequestBody PurchaseCarObject purchaseCarObject, @PathVariable long id) {
-        Optional<Car> carOptional = carRepository.findById(id);
-        if (!carOptional.isPresent())
-            return ResponseEntity.notFound().build();
-
-        Car car = carOptional.get();
-        car.setPayerName(purchaseCarObject.getPayerName());
-        car.setDateOfSale(purchaseCarObject.getDateOfSale());
-        try {
-            double defaultPrice = Double.parseDouble(parametersMap.get("profitPercentage").toString());
-            double finalPrice;
-            if(purchaseCarObject.getPriceOfSale() != 0) {
-                finalPrice = defaultPrice * purchaseCarObject.getPriceOfSale();
-            } else {
-                finalPrice = defaultPrice * car.getPrice();
-            }
-            car.setPriceOfSale(finalPrice);
-            carRepository.save(car);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
-
+        return carService.purchaseCar(id, purchaseCarObject);
     }
 
 

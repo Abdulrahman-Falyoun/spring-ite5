@@ -2,18 +2,15 @@ package com.ite5year.models;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import com.ite5year.optimisticlock.VersionedEntity;
+
+import javax.persistence.*;
 import java.util.Date;
 
 
 @Entity
-public class Car {
+public class Car implements VersionedEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double price;
@@ -22,6 +19,8 @@ public class Car {
     private double priceOfSale;
     private String payerName;
 
+    @Version
+    private Long version;
     public Car() {
     }
 
@@ -104,6 +103,22 @@ public class Car {
     }
 
     @Override
+    public Long getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    @Override
+    public String getTableName() {
+        return "car";
+    }
+
+
+    @Override
     public String toString() {
         return "Car{" +
                 "id=" + id +
@@ -113,6 +128,7 @@ public class Car {
                 ", dateOfSale=" + dateOfSale +
                 ", priceOfSale=" + priceOfSale +
                 ", payerName='" + payerName + '\'' +
+                ", version=" + version +
                 '}';
     }
 }
