@@ -21,11 +21,22 @@
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/BatchConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/BatchConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/CarFieldSetMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/CarFieldSetMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/CarProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/CarProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/NotificationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/batch/configuration/NotificationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/messagingrabbitmq/RabbitMQConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/messagingrabbitmq/RabbitMQConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/GoogleGmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/GoogleGmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/BatchConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/BatchConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/SharedParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/SharedParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarFieldSetMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarFieldSetMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/CarProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/NotificationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/batch/configuration/NotificationListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/messagingrabbitmq/RabbitMQConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/messagingrabbitmq/RabbitMQConsumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/models/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/models/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +129,9 @@
       <workItem from="1605700835995" duration="7851000" />
       <workItem from="1605737616892" duration="2438000" />
       <workItem from="1605848544362" duration="3880000" />
-      <workItem from="1605868314201" duration="7649000" />
+      <workItem from="1605868314201" duration="7919000" />
+      <workItem from="1605889596623" duration="1556000" />
+      <workItem from="1605947551287" duration="3350000" />
     </task>
     <servers />
   </component>
@@ -150,10 +163,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605349039246" />
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1605872095913">
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1605950275379">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605872095913" />
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605950275379" />
     <state x="689" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605349037742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -174,38 +187,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605349043187" />
-    <state width="1877" height="134" key="GridCell.Tab.0.bottom" timestamp="1605875575927">
+    <state width="1877" height="458" key="GridCell.Tab.0.bottom" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575927" />
-    <state width="1877" height="134" key="GridCell.Tab.0.center" timestamp="1605875575926">
+    <state width="1877" height="458" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.0.center" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575926" />
-    <state width="1877" height="134" key="GridCell.Tab.0.left" timestamp="1605875575926">
+    <state width="1877" height="458" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.0.left" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575926" />
-    <state width="1877" height="134" key="GridCell.Tab.0.right" timestamp="1605875575926">
+    <state width="1877" height="458" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.0.right" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575926" />
-    <state width="1877" height="134" key="GridCell.Tab.1.bottom" timestamp="1605875575927">
+    <state width="1877" height="458" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.1.bottom" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575927" />
-    <state width="1877" height="134" key="GridCell.Tab.1.center" timestamp="1605875575927">
+    <state width="1877" height="458" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.1.center" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575927" />
-    <state width="1877" height="134" key="GridCell.Tab.1.left" timestamp="1605875575927">
+    <state width="1877" height="458" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.1.left" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575927" />
-    <state width="1877" height="134" key="GridCell.Tab.1.right" timestamp="1605875575927">
+    <state width="1877" height="458" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
+    <state width="1877" height="458" key="GridCell.Tab.1.right" timestamp="1605949842777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="134" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605875575927" />
+    <state width="1877" height="458" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605949842777" />
     <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1605521974626">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -214,9 +227,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="185" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605519893378" />
-    <state x="616" y="192" width="670" height="676" key="search.everywhere.popup" timestamp="1605849057074">
+    <state x="616" y="192" width="672" height="676" key="search.everywhere.popup" timestamp="1605949296794">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="616" y="192" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605849057074" />
+    <state x="616" y="192" width="672" height="676" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605949296794" />
   </component>
 </project>

@@ -56,20 +56,14 @@ public class RabbitMQConsumer {
             List<Car> cars = carService.findAllSoldCardByDate(dt);
             System.out.println("Cars: " + cars);
             String content = rabbitMessage.getContent();
-
             System.out.println("content: " + content);
             try {
-
-
-
-
 
                 FileWriter writer = new FileWriter("sto1.csv");
                 String collect = cars.stream().map(Car::getName).collect(Collectors.joining(","));
                 System.out.println(collect);
                 writer.write(collect);
                 writer.close();
-
 
 
 
@@ -87,14 +81,6 @@ public class RabbitMQConsumer {
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
-
-
-
         }
-
-
-
-
-
     }
 }

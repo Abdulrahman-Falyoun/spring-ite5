@@ -1,9 +1,9 @@
 package com.ite5year.models;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
+// INSERT INTO shared_parameters(field_key, field_value) VALUES ('seatsNumber', 4)
+// INSERT INTO shared_parameters(field_key, field_value) VALUES ('profitPercentage', 1000)
 @Entity
 public class SharedParameters {
     @Id long id;

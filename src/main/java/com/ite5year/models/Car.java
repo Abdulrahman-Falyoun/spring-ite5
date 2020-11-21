@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -17,8 +18,9 @@ public class Car {
     private String name;
     private double price;
     private int seatsNumber;
-    private LocalDateTime dateOfSale;
+    private Date dateOfSale;
     private double priceOfSale;
+    private String payerName;
 
     public Car() {
     }
@@ -28,7 +30,7 @@ public class Car {
         this.price = price;
     }
 
-    public Car(String name, double price, int seatsNumber, LocalDateTime dateOfSale, double priceOfSale) {
+    public Car(String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
         this.name = name;
         this.price = price;
         this.seatsNumber = seatsNumber;
@@ -36,7 +38,7 @@ public class Car {
         this.priceOfSale = priceOfSale;
     }
 
-    public Car(Long id, String name, double price, int seatsNumber, LocalDateTime dateOfSale, double priceOfSale) {
+    public Car(Long id, String name, double price, int seatsNumber, Date dateOfSale, double priceOfSale) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -77,11 +79,11 @@ public class Car {
         this.seatsNumber = seatsNumber;
     }
 
-    public LocalDateTime getDateOfSale() {
+    public Date getDateOfSale() {
         return dateOfSale;
     }
 
-    public void setDateOfSale(LocalDateTime dateOfSale) {
+    public void setDateOfSale(Date dateOfSale) {
         this.dateOfSale = dateOfSale;
     }
 
@@ -93,6 +95,14 @@ public class Car {
         this.priceOfSale = priceOfSale;
     }
 
+    public String getPayerName() {
+        return payerName;
+    }
+
+    public void setPayerName(String payerName) {
+        this.payerName = payerName;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -102,6 +112,7 @@ public class Car {
                 ", seatsNumber=" + seatsNumber +
                 ", dateOfSale=" + dateOfSale +
                 ", priceOfSale=" + priceOfSale +
+                ", payerName='" + payerName + '\'' +
                 '}';
     }
 }

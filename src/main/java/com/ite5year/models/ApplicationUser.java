@@ -23,6 +23,9 @@ public class ApplicationUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Version
+    private Integer version;
+
     @NotBlank
     @Size(max = 20)
     private String username;
@@ -97,5 +100,13 @@ public class ApplicationUser implements Serializable {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

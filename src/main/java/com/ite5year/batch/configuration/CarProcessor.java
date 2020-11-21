@@ -16,7 +16,7 @@ public class CarProcessor implements ItemProcessor<Car, Car> {
         final String name = car.getName();
         final double price = car.getPrice();
         final int seatsNumber = car.getSeatsNumber();
-        final LocalDateTime dateOfSale = car.getDateOfSale();
+        final Date dateOfSale = car.getDateOfSale();
         final double priceOfSale = car.getPriceOfSale();
 
 

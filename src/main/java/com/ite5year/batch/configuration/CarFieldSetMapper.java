@@ -14,9 +14,7 @@ public class CarFieldSetMapper implements FieldSetMapper<Car> {
         car.setName(fieldSet.readString("name"));
         car.setSeatsNumber(fieldSet.readInt("seatsNumber"));
         car.setPrice(fieldSet.readDouble("price"));
-        car.setDateOfSale(fieldSet.readDate("dateOfSale").toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime());
+        car.setDateOfSale(fieldSet.readDate("dateOfSale"));
         car.setPriceOfSale(fieldSet.readDouble("priceOfSale"));
         return car;
     }

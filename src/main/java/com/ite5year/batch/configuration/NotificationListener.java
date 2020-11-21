@@ -38,9 +38,7 @@ public class NotificationListener extends JobExecutionListenerSupport {
                             rs.getString(1),
                             rs.getDouble(2),
                             rs.getInt(3),
-                            rs.getDate(4).toInstant()
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDateTime(),
+                            rs.getDate(4),
                             rs.getDouble(5))
 
             ).forEach(car -> LOGGER.info("Found <" + car + "> in the database."));

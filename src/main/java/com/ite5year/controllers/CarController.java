@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -80,28 +81,60 @@ public class CarController {
 
 
     @PostMapping
-    public @ResponseBody  Car createNewCar(@RequestBody Car car) {
+    public @ResponseBody  Car createNewCar(@RequestBody Car car) throws Exception {
         if(car.getSeatsNumber() <= 0) {
             int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
             car.setSeatsNumber(seatsNumber);
         }
+        if(car.getDateOfSale() != null || car.getPayerName() != null) {
+            throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName()  + "  when you're creating the car");
+        }
+
         return carRepository.save(car);
     }
 
-
+    @Transactional
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateStudent(@RequestBody Car student, @PathVariable long id) {
+    public ResponseEntity<Object> updateCar(@RequestBody Car car, @PathVariable long id) {
 
-        Optional<Car> studentOptional = carRepository.findById(id);
-
-        if (!studentOptional.isPresent())
+        Optional<Car> carOptional = carRepository.findById(id);
+        if (!carOptional.isPresent())
             return ResponseEntity.notFound().build();
 
-        student.setId(id);
-        carRepository.save(student);
+        car.setId(id);
+        carRepository.save(car);
 
         return ResponseEntity.noContent().build();
     }
+
+    @Transactional
+    @PutMapping("/purchase/{id}")
+    public ResponseEntity<Object> purchaseCar(@RequestBody PurchaseCarObject purchaseCarObject, @PathVariable long id) {
+        Optional<Car> carOptional = carRepository.findById(id);
+        if (!carOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        Car car = carOptional.get();
+        car.setPayerName(purchaseCarObject.getPayerName());
+        car.setDateOfSale(purchaseCarObject.getDateOfSale());
+        try {
+            double defaultPrice = Double.parseDouble(parametersMap.get("profitPercentage").toString());
+            double finalPrice;
+            if(purchaseCarObject.getPriceOfSale() != 0) {
+                finalPrice = defaultPrice * purchaseCarObject.getPriceOfSale();
+            } else {
+                finalPrice = defaultPrice * car.getPrice();
+            }
+            car.setPriceOfSale(finalPrice);
+            carRepository.save(car);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
+
+
     @GetMapping("/un-sold")
     public @ResponseBody List<Car> getAllUnSoldCars() {
         return carService.findAllUnSoldCar();
