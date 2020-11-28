@@ -69,8 +69,6 @@ public class CarControllerIntegrationTest {
         ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/cars",
                 HttpMethod.GET, entity, String.class);
         assertNotNull(response.getBody());
-
-        System.out.println(response.getBody());
     }
 
     @Test
