@@ -20,7 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/payload/response/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/payload/response/JwtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/ApplicationUserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/ApplicationUserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ite5year/HelloControllerIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ite5year/HelloControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/models/ApplicationUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/models/ApplicationUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/payload/response/JwtResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/payload/response/JwtResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/ApplicationUserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/ApplicationUserDetailsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ite5year/HelloControllerIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ite5year/HelloControllerTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +83,46 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ite5year" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ite5year.integration" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\spring\gs-spring-boot\complete\src\main\java\com\ite5year\messagingrabbitmq" />
       <recent name="C:\dev\spring\gs-spring-boot\complete\src\main\java\com\ite5year\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="JUnit.CarControllerIntegrationTest.testGetAllCars">
+    <configuration name="CarControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ite5year.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ite5year.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.ite5year.integration.CarControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CarControllerIntegrationTest.testGetAllCars" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ite5year.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ite5year.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.ite5year.integration.CarControllerIntegrationTest" />
+      <option name="METHOD_NAME" value="testGetAllCars" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="spring-boot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ite5year.Application" />
@@ -91,6 +145,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CarControllerIntegrationTest.testGetAllCars" />
+        <item itemvalue="JUnit.CarControllerIntegrationTest" />
         <item itemvalue="Spring Boot.MessagingRabbitmqApplication" />
       </list>
     </recent_temporary>
@@ -120,6 +176,8 @@
       <workItem from="1606135860841" duration="524000" />
       <workItem from="1606204512356" duration="1887000" />
       <workItem from="1606225034194" duration="937000" />
+      <workItem from="1606459575646" duration="31000" />
+      <workItem from="1606545505706" duration="5994000" />
     </task>
     <servers />
   </component>
@@ -151,10 +209,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605349039246" />
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1605958162526">
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1606550425456">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605958162526" />
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1606550425456" />
     <state x="689" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605349037742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -175,42 +233,42 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1605349043187" />
-    <state width="1877" height="392" key="GridCell.Tab.0.bottom" timestamp="1605958976009">
+    <state width="1877" height="471" key="GridCell.Tab.0.bottom" timestamp="1606551232588">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976009" />
-    <state width="1877" height="392" key="GridCell.Tab.0.center" timestamp="1605958976009">
+    <state width="1877" height="471" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606551232588" />
+    <state width="1877" height="471" key="GridCell.Tab.0.center" timestamp="1606551232588">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976009" />
-    <state width="1877" height="392" key="GridCell.Tab.0.left" timestamp="1605958976008">
+    <state width="1877" height="471" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606551232588" />
+    <state width="1877" height="471" key="GridCell.Tab.0.left" timestamp="1606551232588">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976008" />
-    <state width="1877" height="392" key="GridCell.Tab.0.right" timestamp="1605958976009">
+    <state width="1877" height="471" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606551232588" />
+    <state width="1877" height="471" key="GridCell.Tab.0.right" timestamp="1606551232588">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976009" />
-    <state width="1877" height="392" key="GridCell.Tab.1.bottom" timestamp="1605958976010">
+    <state width="1877" height="471" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606551232588" />
+    <state width="1877" height="233" key="GridCell.Tab.1.bottom" timestamp="1606551058576">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976010" />
-    <state width="1877" height="392" key="GridCell.Tab.1.center" timestamp="1605958976010">
+    <state width="1877" height="233" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606551058576" />
+    <state width="1877" height="233" key="GridCell.Tab.1.center" timestamp="1606551058576">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976010" />
-    <state width="1877" height="392" key="GridCell.Tab.1.left" timestamp="1605958976010">
+    <state width="1877" height="233" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606551058576" />
+    <state width="1877" height="233" key="GridCell.Tab.1.left" timestamp="1606551058576">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976010" />
-    <state width="1877" height="392" key="GridCell.Tab.1.right" timestamp="1605958976010">
+    <state width="1877" height="233" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606551058576" />
+    <state width="1877" height="233" key="GridCell.Tab.1.right" timestamp="1606551058576">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="392" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605958976010" />
-    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1605955195323">
+    <state width="1877" height="233" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606551058576" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1606547338335">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="490" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605955195323" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606547338335" />
     <state x="461" y="185" key="SettingsEditor" timestamp="1605519893378">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

@@ -70,6 +70,7 @@ public class CarServiceImpl implements CarService {
         return res;
     }
 
+    @Transactional
     @Override
     public ResponseEntity<Object> purchaseCar(long carId, PurchaseCarObject purchaseCarObject) {
         Optional<Car> carOptional = carRepository.findById(carId);

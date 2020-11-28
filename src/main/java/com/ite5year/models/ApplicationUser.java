@@ -12,7 +12,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(	name = "users",
+@Table(name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
@@ -39,8 +39,11 @@ public class ApplicationUser implements Serializable {
     @Size(max = 120)
     private String password;
 
+    @NotBlank
+    private String jwt;
+
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "user_roles",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
@@ -52,6 +55,7 @@ public class ApplicationUser implements Serializable {
      * INSERT INTO roles(name) VALUES('ROLE_USER');
      * INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
      * INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+     *
      * @param username
      * @param email
      * @param password
@@ -60,6 +64,13 @@ public class ApplicationUser implements Serializable {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public ApplicationUser(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(max = 120) String password, @NotBlank String jwt) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.jwt = jwt;
     }
 
     public Long getId() {
@@ -104,6 +115,14 @@ public class ApplicationUser implements Serializable {
 
     public Integer getVersion() {
         return version;
+    }
+
+    public String getJwt() {
+        return jwt;
+    }
+
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
     }
 
     public void setVersion(Integer version) {

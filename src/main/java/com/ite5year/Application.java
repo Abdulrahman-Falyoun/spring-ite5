@@ -2,6 +2,7 @@ package com.ite5year;
 
 import com.ite5year.models.SharedParameters;
 import com.ite5year.repositories.SharedParametersRepository;
+import com.ite5year.services.AuthenticationService;
 import com.ite5year.services.CarServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,4 +37,10 @@ public class Application {
 	public CarServiceImpl carService() {
 		return new CarServiceImpl();
 	}
+
+	@Bean
+	public AuthenticationService authenticationService() {
+		return new AuthenticationService();
+	};
+
 }
