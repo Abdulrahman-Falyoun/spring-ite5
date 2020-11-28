@@ -39,9 +39,6 @@ public class ApplicationUser implements Serializable {
     @Size(max = 120)
     private String password;
 
-    @NotBlank
-    private String jwt;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -66,12 +63,7 @@ public class ApplicationUser implements Serializable {
         this.password = password;
     }
 
-    public ApplicationUser(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(max = 120) String password, @NotBlank String jwt) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.jwt = jwt;
-    }
+
 
     public Long getId() {
         return id;
@@ -117,13 +109,6 @@ public class ApplicationUser implements Serializable {
         return version;
     }
 
-    public String getJwt() {
-        return jwt;
-    }
-
-    public void setJwt(String jwt) {
-        this.jwt = jwt;
-    }
 
     public void setVersion(Integer version) {
         this.version = version;

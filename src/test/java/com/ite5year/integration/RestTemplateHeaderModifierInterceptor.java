@@ -2,8 +2,6 @@ package com.ite5year.integration;
 
 import com.ite5year.authentication.handlers.JwtUtils;
 import com.ite5year.services.ApplicationUserDetailsServiceImpl;
-import com.ite5year.services.AuthenticationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -28,7 +26,7 @@ public class RestTemplateHeaderModifierInterceptor implements ClientHttpRequestI
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 String jwt = jwtUtils.generateJwtToken(authentication);
-                request.getHeaders().add("Authorization", "Bearer " + jwt);
+                request.getHeaders().add("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBYmR1bHJhaG1hbiIsImlhdCI6MTYwNjU2NzY4OCwiZXhwIjoxNjA2NjU3Njg4fQ.MpfWMFs9I5KJDK4H_itu6omq8JMZN0pl01rAOhHBOSAYMvMRjcfWQOaAj96YVdM8Rpn3aSIxI-nI0jEviWRPBw");
             }
             return execution.execute(request, body);
         } catch (IOException e) {

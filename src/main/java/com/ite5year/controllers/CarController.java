@@ -93,8 +93,8 @@ public class CarController {
 
 
     @PostMapping("/create")
-    public @ResponseBody
-    Car createNewCar(@RequestBody Car car) throws Exception {
+    public @ResponseBody Car createNewCar(@RequestBody Car car) throws Exception {
+        System.out.println(car);
         if (car.getSeatsNumber() <= 0) {
             int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
             car.setSeatsNumber(seatsNumber);
