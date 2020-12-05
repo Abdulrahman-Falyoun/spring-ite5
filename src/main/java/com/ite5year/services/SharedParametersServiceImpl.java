@@ -62,7 +62,7 @@ public class SharedParametersServiceImpl implements SharedParametersService {
     }
 
     @Override
-    public SharedParam findById(String key) {
+    public SharedParam findByKey(String key) {
         return hashOperations.get("SharedParameters", key);
     }
 

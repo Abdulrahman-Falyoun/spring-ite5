@@ -7,7 +7,7 @@ import java.util.Map;
 public interface SharedParametersService {
     SharedParam save(SharedParam sharedParam);
     Map<String, SharedParam> findAll();
-    SharedParam findById(String id);
+    SharedParam findByKey(String id);
     void update(SharedParam user);
     void delete(String id);
 }
