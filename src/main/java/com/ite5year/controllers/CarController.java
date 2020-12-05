@@ -9,6 +9,9 @@ import com.ite5year.repositories.CarRepository;
 import com.ite5year.services.CarServiceImpl;
 import com.sun.mail.iap.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,6 +77,7 @@ public class CarController {
 
 
     @GetMapping("/{id}")
+    @Cacheable(value = "cars", key = "#id")
     public ResponseEntity<Car> retrieveCarById(@PathVariable long id) throws ResourceNotFoundException {
         Car car = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
         return ResponseEntity.ok().body(car);
@@ -82,6 +86,7 @@ public class CarController {
 
 
     @DeleteMapping("/{id}")
+    @CacheEvict(value = "cars", allEntries = true)
     public Map<String, Boolean> deleteCar(@PathVariable long id) throws ResourceNotFoundException {
         Car car = carRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found for this id :: " + id));
@@ -93,7 +98,8 @@ public class CarController {
 
 
     @PostMapping("/create")
-    public @ResponseBody Car createNewCar(@RequestBody Car car) throws Exception {
+    public @ResponseBody
+    Car createNewCar(@RequestBody Car car) throws Exception {
         System.out.println(car);
         if (car.getSeatsNumber() <= 0) {
             int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
@@ -122,9 +128,10 @@ public class CarController {
 
     @Transactional
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateCar(@RequestBody Car updatedCar, @PathVariable long id) throws ResourceNotFoundException {
+    @CachePut(value = "cars", key = "#updatedCar.id")
+    public ResponseEntity<Object> updateCar(@RequestBody Car updatedCar) throws ResourceNotFoundException {
 
-        Car car = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
+        Car car = carRepository.findById(updatedCar.getId()).orElseThrow(() -> new ResourceNotFoundException("Car with id " + updatedCar.getId() + " is not found!"));
         car.setSeatsNumber(updatedCar.getSeatsNumber());
         car.setPayerName(updatedCar.getPayerName());
         car.setDateOfSale(updatedCar.getDateOfSale());

@@ -1,18 +1,19 @@
 package com.ite5year.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 // INSERT INTO shared_parameters(field_key, field_value) VALUES ('seatsNumber', 4)
 // INSERT INTO shared_parameters(field_key, field_value) VALUES ('profitPercentage', 1000)
 @Entity
-public class SharedParameters {
+public class SharedParam implements Serializable {
     @Id long id;
     String fieldKey, fieldValue;
 
-    public SharedParameters() {
+    public SharedParam() {
     }
 
-    public SharedParameters(String fieldKey, String fieldValue) {
+    public SharedParam(String fieldKey, String fieldValue) {
         this.fieldKey = fieldKey;
         this.fieldValue = fieldValue;
     }

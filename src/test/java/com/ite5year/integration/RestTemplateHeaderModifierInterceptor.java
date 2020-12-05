@@ -26,7 +26,7 @@ public class RestTemplateHeaderModifierInterceptor implements ClientHttpRequestI
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 String jwt = jwtUtils.generateJwtToken(authentication);
-                request.getHeaders().add("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBYmR1bHJhaG1hbiIsImlhdCI6MTYwNjU2NzY4OCwiZXhwIjoxNjA2NjU3Njg4fQ.MpfWMFs9I5KJDK4H_itu6omq8JMZN0pl01rAOhHBOSAYMvMRjcfWQOaAj96YVdM8Rpn3aSIxI-nI0jEviWRPBw");
+                request.getHeaders().add("Authorization", "Bearer " + jwt);
             }
             return execution.execute(request, body);
         } catch (IOException e) {
