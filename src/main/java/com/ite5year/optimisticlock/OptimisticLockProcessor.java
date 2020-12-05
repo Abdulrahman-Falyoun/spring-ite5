@@ -50,16 +50,12 @@ public class OptimisticLockProcessor implements BeanPostProcessor {
                             // It was necessary to get the jdbcTemplate here in the handler
                             // It is not possible to autowire this bean in at startup.
                             JdbcTemplate jdbcTemplate = (JdbcTemplate) appContext.getBean("jdbcTemplate");
-                            System.out.println("inputDataObject.getTableName(): " + inputDataObject.getTableName());
-                            System.out.println("inputDataObject.getId(): " + inputDataObject.getId());
                             Long databaseVersion = jdbcTemplate.queryForObject(
                                     "select version from " + inputDataObject.getTableName() + " where id = ?",
                                     Long.class, inputDataObject.getId());
 
                             // If the versions match, we're good to save
                             // Bump up the version
-                            System.out.println("Databaseversion: " + databaseVersion);
-                            System.out.println("inputDataObject: " + inputDataObject);
                             if (inputDataObject.getVersion().equals(databaseVersion)) {
                                 Long newVersion = inputDataObject.getVersion() + 1L;
                                 inputDataObject.setVersion(newVersion);

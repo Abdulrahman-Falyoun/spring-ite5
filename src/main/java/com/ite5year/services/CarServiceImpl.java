@@ -1,10 +1,7 @@
 package com.ite5year.services;
 
 import com.ite5year.enums.SearchOperation;
-import com.ite5year.models.Car;
-import com.ite5year.models.GenericSpecification;
-import com.ite5year.models.PurchaseCarObject;
-import com.ite5year.models.SearchCriteria;
+import com.ite5year.models.*;
 import com.ite5year.optimisticlock.OptimisticallyLocked;
 import com.ite5year.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +29,8 @@ public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepository carRepository;
-    @Resource(name="sharedParametersMap")
-    private Map<String, Object> parametersMap;
 
+    private SharedParametersServiceImpl sharedParametersService;
     public CarServiceImpl(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
@@ -45,6 +41,11 @@ public class CarServiceImpl implements CarService {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
+    @Autowired
+    public void setSharedParametersService(SharedParametersServiceImpl sharedParametersService) {
+        this.sharedParametersService = sharedParametersService;
+    }
 
     @Override
     public List<Car> findAllUnSoldCar() {
@@ -81,16 +82,22 @@ public class CarServiceImpl implements CarService {
         car.setPayerName(purchaseCarObject.getPayerName());
         car.setDateOfSale(purchaseCarObject.getDateOfSale());
         try {
-            double defaultPrice = Double.parseDouble(parametersMap.get("profitPercentage").toString());
-            double finalPrice;
-            if(purchaseCarObject.getPriceOfSale() != 0) {
-                finalPrice = defaultPrice * purchaseCarObject.getPriceOfSale();
-            } else {
-                finalPrice = defaultPrice * car.getPrice();
+            SharedParam sharedParam = sharedParametersService.findByKey("profitPercentage");
+            if(sharedParam != null) {
+                double defaultPrice = Double.parseDouble(sharedParam.getFieldValue());
+                double finalPrice;
+                if(purchaseCarObject.getPriceOfSale() != 0) {
+                    finalPrice = defaultPrice * purchaseCarObject.getPriceOfSale();
+                } else {
+                    finalPrice = defaultPrice * car.getPrice();
+                }
+                car.setPriceOfSale(finalPrice);
+                carRepository.save(car);
+                return ResponseEntity.ok(car);
             }
-            car.setPriceOfSale(finalPrice);
-            carRepository.save(car);
-            return ResponseEntity.ok(car);
+            else {
+                return ResponseEntity.unprocessableEntity().body(car);
+            }
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(car);
         }

@@ -24,8 +24,14 @@ public class SharedParametersController {
     @PutMapping("/put-param")
     public @ResponseBody
     Map<String, SharedParam> putParam(String key, String value) {
+
         if (key != null && value != null) {
-            sharedParametersService.save(new SharedParam(key, value));
+            SharedParam sharedParam = sharedParametersService.findByKey(key);
+            if(sharedParam != null) {
+                sharedParam.setFieldValue(value);
+                sharedParametersService.update(sharedParam);
+            }
+            else sharedParametersService.save(new SharedParam(key, value));
         }
         return sharedParametersService.findAll();
     }

@@ -6,8 +6,9 @@ import com.ite5year.messagingrabbitmq.RabbitMQSender;
 import com.ite5year.models.*;
 import com.ite5year.payload.exceptions.ResourceNotFoundException;
 import com.ite5year.repositories.CarRepository;
+import com.ite5year.services.CacheServiceImpl;
 import com.ite5year.services.CarServiceImpl;
-import com.sun.mail.iap.Response;
+import com.ite5year.services.SharedParametersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -15,7 +16,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,14 +29,13 @@ import static com.ite5year.utils.GlobalConstants.BASE_URL;
 @RestController()
 @RequestMapping(BASE_URL + "/cars")
 public class CarController {
-    @Resource(name = "sharedParametersMap")
-    private Map<String, Object> parametersMap;
 
+
+    private CacheServiceImpl cacheService;
     private CarRepository carRepository;
     private CarServiceImpl carService;
     RabbitMQSender rabbitMQSender;
-
-    @Autowired
+    private SharedParametersServiceImpl sharedParametersService;
     private CarDao carDao;
 
     @Autowired
@@ -44,12 +43,9 @@ public class CarController {
         this.rabbitMQSender = rabbitMQSender;
     }
 
-    public Map<String, Object> getParametersMap() {
-        return parametersMap;
-    }
-
-    public void setParametersMap(Map<String, Object> parametersMap) {
-        this.parametersMap = parametersMap;
+    @Autowired
+    public void setCarDao(CarDao carDao) {
+        this.carDao = carDao;
     }
 
     public CarServiceImpl getCarService() {
@@ -61,8 +57,18 @@ public class CarController {
         this.carService = carService;
     }
 
+    @Autowired
+    public void setCacheService(CacheServiceImpl cacheService) {
+        this.cacheService = cacheService;
+    }
+
     public CarRepository getCarRepository() {
         return carRepository;
+    }
+
+    @Autowired
+    public void setSharedParametersService(SharedParametersServiceImpl sharedParametersService) {
+        this.sharedParametersService = sharedParametersService;
     }
 
     @Autowired
@@ -96,15 +102,23 @@ public class CarController {
         return response;
     }
 
+    private void updateSeatsNumberOfCar(Car car) throws Exception {
+        if (car.getSeatsNumber() <= 0) {
+            SharedParam sharedParam = sharedParametersService.findByKey("seatsNumber");
+            if(sharedParam != null) {
+                String numberOfSeats = sharedParam.getFieldValue();
+                int seatsNumber = Integer.parseInt(numberOfSeats);
+                car.setSeatsNumber(seatsNumber);
+            } else {
+                throw new Exception("Shared param for seats number does not exist");
+            }
+        }
+    }
 
     @PostMapping("/create")
     public @ResponseBody
     Car createNewCar(@RequestBody Car car) throws Exception {
-        System.out.println(car);
-        if (car.getSeatsNumber() <= 0) {
-            int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
-            car.setSeatsNumber(seatsNumber);
-        }
+        updateSeatsNumberOfCar(car);
         if (car.getDateOfSale() != null || car.getPayerName() != null) {
             throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName() + "  when you're creating the car");
         }
@@ -116,10 +130,7 @@ public class CarController {
     @PostMapping("/create/with-optimistic-lock")
     public @ResponseBody
     Car createNewCarWithOptimisticLock(@RequestBody Car car) throws Exception {
-        if (car.getSeatsNumber() <= 0) {
-            int seatsNumber = Integer.parseInt(parametersMap.get("seatsNumber").toString());
-            car.setSeatsNumber(seatsNumber);
-        }
+        updateSeatsNumberOfCar(car);
         if (car.getDateOfSale() != null || car.getPayerName() != null) {
             throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName() + "  when you're creating the car");
         }
@@ -173,5 +184,11 @@ public class CarController {
     @PostMapping("/report")
     public RabbitMessage generateReportForCars(@RequestBody RabbitMessage rabbitMessage) {
         return rabbitMQSender.send(rabbitMessage);
+    }
+
+
+    @DeleteMapping("/evict-caching")
+    public void evictCaching() {
+        cacheService.evictAllCacheValues("cars");
     }
 }
