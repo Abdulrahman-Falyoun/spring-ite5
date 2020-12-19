@@ -6,8 +6,18 @@ public class PurchaseCarObject {
     private String payerName;
     private Date dateOfSale;
     private double priceOfSale;
+    private long waitPeriod;
 
     public PurchaseCarObject() {
+    }
+
+
+    public long getWaitPeriod() {
+        return waitPeriod;
+    }
+
+    public void setWaitPeriod(long waitPeriod) {
+        this.waitPeriod = waitPeriod;
     }
 
     public PurchaseCarObject(String payerName, Date dateOfSale, double priceOfSale) {

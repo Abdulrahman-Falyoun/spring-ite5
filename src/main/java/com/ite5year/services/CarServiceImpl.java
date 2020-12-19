@@ -23,6 +23,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 @Service(value = "CarServiceImpl")
 @Transactional
@@ -82,6 +85,8 @@ public class CarServiceImpl implements CarService {
         if (!carOptional.isPresent())
             return ResponseEntity.notFound().build();
 
+
+        System.out.println("Completed...");
         Car car = carOptional.get();
         car.setPayerName(purchaseCarObject.getPayerName());
         car.setDateOfSale(purchaseCarObject.getDateOfSale());

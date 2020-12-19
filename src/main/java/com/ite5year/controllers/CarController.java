@@ -108,9 +108,9 @@ public class CarController {
 
     @GetMapping("/{id}")
     @Cacheable(value = "cars", key = "#id")
-    public ResponseEntity<Car> retrieveCarById(@PathVariable long id) throws ResourceNotFoundException {
+    public Car retrieveCarById(@PathVariable long id) throws ResourceNotFoundException {
         Car car = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
-        return ResponseEntity.ok().body(car);
+        return car;
 
     }
 
@@ -182,8 +182,35 @@ public class CarController {
         return ResponseEntity.ok(responseCar);
     }
 
+    int counter = 0;
+    @PutMapping("/purchase/opt")
+    public ResponseEntity<Object> purchaseCarWithOptimisticLock(@RequestBody Car car)
+            throws ResourceNotFoundException{
+//        Car car = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
+//        car.setDateOfSale(purchaseCarObject.getDateOfSale());
+//        car.setPayerName(purchaseCarObject.getPayerName());
+//
+//        System.out.println("HERE LONG VERSION: " + car.getVersion());
+//        System.out.println("CAR OWNER: " + car.getPayerName());
+//
+//        SharedParam sharedParam = sharedParametersService.findByKey("profitPercentage");
+//        if(sharedParam != null) {
+//            double defaultPrice = Double.parseDouble(sharedParam.getFieldValue());
+//            double finalPrice;
+//            if(purchaseCarObject.getPriceOfSale() != 0) {
+//                finalPrice = defaultPrice * purchaseCarObject.getPriceOfSale();
+//            } else {
+//                finalPrice = defaultPrice * car.getPrice();
+//            }
+//            car.setPriceOfSale(finalPrice);
+//        }
+        long pr;
+        if(counter == 0) pr = 30;
+        else pr = 10;
+        counter++;
+        return ResponseEntity.ok(carDao.updateCarByJDBC(car, pr));
+    }
 
-    @Transactional
     @PutMapping("/purchase/{id}")
     public ResponseEntity<Object> purchaseCar(@RequestBody PurchaseCarObject purchaseCarObject, @PathVariable long id) {
         return carService.purchaseCar(id, purchaseCarObject);

@@ -55,7 +55,7 @@ public class RabbitMQConsumer {
                 StringBuilder stringBuilder = new StringBuilder();
 
                 String[] headers = {"carId", "carName", "dateOfSale", "ownerName"};
-                stringBuilder.append(Arrays.stream(headers).collect(Collectors.joining(",")));
+                stringBuilder.append(String.join(",", headers));
                 stringBuilder.append('\n');
                 cars.forEach(car -> {
                     String line = car.getId() + "," + car.getName() + "," + car.getDateOfSale().toString() + "," + car.getPayerName();

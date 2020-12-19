@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 
 @Repository
 public class CarDao {
@@ -46,6 +47,22 @@ public class CarDao {
 
     @OptimisticallyLocked
     public Car saveCarByJDBC(Car car) {
+        String query = "update car set version = ? , name = ?, price = ?, seats_number = ?, date_of_sale = ?, price_of_sale = ?, payer_name = ? where id = ?";
+        this.jdbcTemplate.update(query,
+                car.getVersion(), car.getName(), car.getPrice(), car.getSeatsNumber(), car.getDateOfSale(), car.getPriceOfSale(), car.getPayerName(), car.getId());
+        return this.findOneUsingJDBC(car.getId());
+    }
+
+    @OptimisticallyLocked
+    public Car updateCarByJDBC(Car car, long pr) {
+        System.out.println(car);
+        try {
+            TimeUnit.SECONDS.sleep(pr);
+
+        } catch (Exception e) {
+            System.out.println("ERROR WHILE WAITING..." + e);
+        }
+        System.out.println("Passing time.........................................");
         String query = "update car set version = ? , name = ?, price = ?, seats_number = ?, date_of_sale = ?, price_of_sale = ?, payer_name = ? where id = ?";
         this.jdbcTemplate.update(query,
                 car.getVersion(), car.getName(), car.getPrice(), car.getSeatsNumber(), car.getDateOfSale(), car.getPriceOfSale(), car.getPayerName(), car.getId());
