@@ -30,7 +30,7 @@ public class CacheServiceImpl {
                 .forEach(cacheName -> Objects.requireNonNull(cacheManager.getCache(cacheName)).clear());
     }
 
-    @Scheduled(fixedRate = 6000)
+    @Scheduled(fixedRate = 36000)
     public void evictAllCachesAtIntervals() {
         evictAllCaches();
     }

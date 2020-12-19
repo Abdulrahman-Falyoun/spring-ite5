@@ -24,14 +24,14 @@ public class JwtUtils {
         ApplicationUserDetailsImpl userPrincipal = (ApplicationUserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
-                .setSubject((userPrincipal.getUsername()))
+                .setSubject((userPrincipal.getEmail()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + EXPIRATION_TIME))
                 .signWith(Keys.hmacShaKeyFor(KEY.getBytes()))
                 .compact();
     }
 
-    public String getUserNameFromJwtToken(String token) {
+    public String getUserEmailFromJwtToken(String token) {
         return Jwts.parser()
                 .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
                 .parseClaimsJws(token)

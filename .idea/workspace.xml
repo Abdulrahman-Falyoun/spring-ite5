@@ -21,26 +21,30 @@
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/constants/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/constants/SecurityConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/aspect/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/aspect/LoggingAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/SharedParametersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/SharedParametersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/SharedParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/SharedParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/optimisticlock/OptimisticLockProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/optimisticlock/OptimisticLockProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/ApplicationUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/models/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/payload/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/payload/request/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/repositories/ApplicationUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/repositories/ApplicationUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/ApplicationUserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/ApplicationUserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CacheServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/CacheServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ite5year/integration/CarControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ite5year/integration/CarControllerIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/aspect/LoggingAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/aspect/LoggingAspect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JWTAuthorizationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JWTAuthorizationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JwtUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JwtUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/AuthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/SharedParametersController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/SharedParametersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/SharedParametersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/models/SharedParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/models/SharedParam.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/CarServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/SharedParametersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/SharedParametersService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/SharedParametersServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/SharedParametersServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/models/ApplicationUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/models/ApplicationUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/models/Car.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/models/Car.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/payload/request/LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/payload/request/LoginRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/repositories/ApplicationUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/repositories/ApplicationUserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/ApplicationUserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/ApplicationUserDetailsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/CacheServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/CacheServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ite5year/integration/CarControllerIntegrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ite5year/integration/CarControllerIntegrationTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,6 +223,8 @@
       <workItem from="1606636603470" duration="5190000" />
       <workItem from="1606979853092" duration="110000" />
       <workItem from="1607152811839" duration="7796000" />
+      <workItem from="1608364177863" duration="1794000" />
+      <workItem from="1608365990854" duration="1668000" />
     </task>
     <servers />
   </component>
@@ -250,14 +256,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605349039246" />
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1607159644302">
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1608367018834">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1607159644302" />
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1608367018834" />
     <state x="689" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605349037742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="689" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605349037742" />
+    <state x="575" y="464" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1608365004054">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="575" y="464" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608365004054" />
     <state x="743" y="409" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606571194140">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -274,42 +284,42 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1606979889213" />
-    <state width="1877" height="612" key="GridCell.Tab.0.bottom" timestamp="1607160945326">
+    <state width="1877" height="478" key="GridCell.Tab.0.bottom" timestamp="1608367588741">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945326" />
-    <state width="1877" height="612" key="GridCell.Tab.0.center" timestamp="1607160945325">
+    <state width="1877" height="478" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588741" />
+    <state width="1877" height="478" key="GridCell.Tab.0.center" timestamp="1608367588741">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945325" />
-    <state width="1877" height="612" key="GridCell.Tab.0.left" timestamp="1607160945325">
+    <state width="1877" height="478" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588741" />
+    <state width="1877" height="478" key="GridCell.Tab.0.left" timestamp="1608367588741">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945325" />
-    <state width="1877" height="612" key="GridCell.Tab.0.right" timestamp="1607160945326">
+    <state width="1877" height="478" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588741" />
+    <state width="1877" height="478" key="GridCell.Tab.0.right" timestamp="1608367588741">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945326" />
-    <state width="1877" height="612" key="GridCell.Tab.1.bottom" timestamp="1607160945326">
+    <state width="1877" height="478" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588741" />
+    <state width="1877" height="478" key="GridCell.Tab.1.bottom" timestamp="1608367588742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945326" />
-    <state width="1877" height="612" key="GridCell.Tab.1.center" timestamp="1607160945326">
+    <state width="1877" height="478" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588742" />
+    <state width="1877" height="478" key="GridCell.Tab.1.center" timestamp="1608367588742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945326" />
-    <state width="1877" height="612" key="GridCell.Tab.1.left" timestamp="1607160945326">
+    <state width="1877" height="478" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588742" />
+    <state width="1877" height="478" key="GridCell.Tab.1.left" timestamp="1608367588742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945326" />
-    <state width="1877" height="612" key="GridCell.Tab.1.right" timestamp="1607160945326">
+    <state width="1877" height="478" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588742" />
+    <state width="1877" height="478" key="GridCell.Tab.1.right" timestamp="1608367588742">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="612" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607160945326" />
-    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1606547338335">
+    <state width="1877" height="478" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608367588742" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1608365598868">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="490" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606547338335" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608365598868" />
     <state x="461" y="185" key="SettingsEditor" timestamp="1605519893378">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

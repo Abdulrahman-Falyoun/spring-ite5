@@ -23,6 +23,11 @@ public class ApplicationUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Car> cars;
+
     @Version
     private Integer version;
 

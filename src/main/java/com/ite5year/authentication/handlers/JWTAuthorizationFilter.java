@@ -57,7 +57,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         try {
             String jwt = parseJwt(request);
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                String username = jwtUtils.getUserNameFromJwtToken(jwt);
+                String username = jwtUtils.getUserEmailFromJwtToken(jwt);
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
@@ -71,6 +71,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith(JWT_TOKEN_PREFIX)) {
@@ -79,6 +80,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
         return null;
     }
+
     private UsernamePasswordAuthenticationToken authenticate(HttpServletRequest request) {
         String token = request.getHeader(JWT_HEADER_STRING).split(" ")[1];
         if (token != null) {
@@ -86,10 +88,12 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                     .setSigningKey(Keys.hmacShaKeyFor(KEY.getBytes()))
                     .parseClaimsJws(token)
                     .getBody();
+
+            System.out.println(user);
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
-            }else{
-                return  null;
+            } else {
+                return null;
             }
 
         }

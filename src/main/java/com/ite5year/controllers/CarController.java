@@ -5,15 +5,20 @@ import com.ite5year.daos.CarDao;
 import com.ite5year.messagingrabbitmq.RabbitMQSender;
 import com.ite5year.models.*;
 import com.ite5year.payload.exceptions.ResourceNotFoundException;
+import com.ite5year.repositories.ApplicationUserRepository;
 import com.ite5year.repositories.CarRepository;
-import com.ite5year.services.CacheServiceImpl;
-import com.ite5year.services.CarServiceImpl;
-import com.ite5year.services.SharedParametersServiceImpl;
+import com.ite5year.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -37,6 +42,25 @@ public class CarController {
     RabbitMQSender rabbitMQSender;
     private SharedParametersServiceImpl sharedParametersService;
     private CarDao carDao;
+    private AuthenticationService authenticationService;
+    private ApplicationUserDetailsServiceImpl applicationUserDetailsService;
+    private ApplicationUserRepository applicationUserRepository;
+
+    @Autowired
+    public void setApplicationUserRepository(ApplicationUserRepository applicationUserRepository) {
+        this.applicationUserRepository = applicationUserRepository;
+    }
+
+
+    @Autowired
+    public void setApplicationUserDetailsService(ApplicationUserDetailsServiceImpl applicationUserDetailsService) {
+        this.applicationUserDetailsService = applicationUserDetailsService;
+    }
+
+    @Autowired
+    public void setAuthenticationService(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
 
     @Autowired
     public void setRabbitMQSender(RabbitMQSender rabbitMQSender) {
@@ -115,6 +139,7 @@ public class CarController {
         }
     }
 
+
     @PostMapping("/create")
     public @ResponseBody
     Car createNewCar(@RequestBody Car car) throws Exception {
@@ -123,6 +148,10 @@ public class CarController {
             throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName() + "  when you're creating the car");
         }
 
+        ApplicationUser user = applicationUserDetailsService.currentUser()
+                .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
+
+        car.setOwner(user);
         return carRepository.save(car);
     }
 

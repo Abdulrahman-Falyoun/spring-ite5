@@ -4,6 +4,7 @@ package com.ite5year.integration;
 import com.ite5year.Application;
 import com.ite5year.models.Car;
 import com.ite5year.repositories.ApplicationUserRepository;
+import com.ite5year.repositories.CarRepository;
 import com.ite5year.services.ApplicationUserDetailsServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,9 +18,11 @@ import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.util.List;
+import java.util.Optional;
+
 import static com.ite5year.utils.GlobalConstants.BASE_URL;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -29,6 +32,9 @@ public class CarControllerIntegrationTest {
 
     @Autowired
     ApplicationUserDetailsServiceImpl userDetailsService;
+
+    @Autowired
+    CarRepository carRepository;
 
     @LocalServerPort
     private int port;
@@ -67,6 +73,47 @@ public class CarControllerIntegrationTest {
         System.out.println(response.getBody());
     }
 
+    @Test public void inMemoryTestGettingAllCars() {
+        List<Car> cars = carRepository.findAll();
+        assert (cars != null && cars.size() > 0);
+    }
+    @Test public void inMemoryCreateCar() {
+        Car car = new Car();
+        car.setName("Mercedes");
+        car.setPrice(2000);
+        car.setSeatsNumber(5);
+        car.setPayerName("admin");
+
+        Car savedCar = carRepository.save(car);
+
+        assert (savedCar != null && savedCar.getId() != 0);
+    }
+
+    @Test public void inMemoryDeleteCar() {
+        long carId = 2;
+        Optional<Car> car = carRepository.findById(carId);
+        assertTrue(car.isPresent());
+        carRepository.deleteById(carId);
+    }
+    @Test public void inMemoryUpdateCar() {
+        long carId = 2;
+        Optional<Car> optionalCar = carRepository.findById(carId);
+        assertTrue(optionalCar.isPresent());
+        Car car = optionalCar.get();
+
+        car.setPayerName("New payer name");
+        car.setPrice(20000);
+        car.setName("Whatever");
+
+        Optional<Car> updatedCarOptional = carRepository.findById(car.getId());
+        assertTrue(updatedCarOptional.isPresent());
+        Car updatedCar = updatedCarOptional.get();
+
+        assertEquals(updatedCar.getName(), car.getName());
+        assertEquals(updatedCar.getPrice(), car.getPrice());
+        assertEquals(updatedCar.getPayerName(), car.getPayerName());
+
+    }
     @Test
     public void testGetCarById() {
         Car car = restTemplate.getForObject(getRootUrl() + "/cars/33", Car.class);

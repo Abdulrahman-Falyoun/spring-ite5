@@ -5,11 +5,13 @@ package com.ite5year.models;
 import com.ite5year.optimisticlock.VersionedEntity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
-public class Car implements VersionedEntity {
+@Table(name = "car")
+public class Car implements VersionedEntity, Serializable {
     @Id
     private Long id;
     private String name;
@@ -19,9 +21,21 @@ public class Car implements VersionedEntity {
     private double priceOfSale;
     private String payerName;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private ApplicationUser owner;
+
     @Version
     private Long version;
     public Car() {
+    }
+
+    public ApplicationUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(ApplicationUser owner) {
+        this.owner = owner;
     }
 
     public Car(String name, double price) {
