@@ -33,14 +33,10 @@ public class RabbitMQConsumer {
         this.carService = carService;
     }
 
-
-    @RabbitListener(queues = "ite5year.queue")
-    public void receivedMessage(RabbitMessage rabbitMessage)   {
-        logger.info("Received Message From RabbitMQ: " + rabbitMessage);
-
+    public boolean sendToEmail(RabbitMessage rabbitMessage) {
         String sellingDate = rabbitMessage.getDate();
         System.out.println("sellingDate: " + sellingDate);
-        if(!sellingDate.equals("")) {
+        if (!sellingDate.equals("")) {
 
             try {
                 final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -65,21 +61,29 @@ public class RabbitMQConsumer {
                 writer.close();
 
 
-
-                File file = new File("sto1.csv");
+                File file = new File(rabbitMessage.getFileName());
                 MimeBodyPart messageBodyPart = new MimeBodyPart();
                 Multipart multipart = new MimeMultipart();
-                String fileName = "cars1.csv";
+                String fileNameInEmail = "cars.csv";
                 FileDataSource source = new FileDataSource(file);
                 messageBodyPart.setDataHandler(new DataHandler(source));
-                messageBodyPart.setFileName(fileName);
+                messageBodyPart.setFileName(fileNameInEmail);
                 multipart.addBodyPart(messageBodyPart);
                 messageBodyPart.setText(content);
                 GoogleGmailService.Send("abd.fl.19999@gmail.com", "A3#33$$F", rabbitMessage.getEmail(), "Report", content, multipart);
                 System.out.println("Successfully an email is sent");
+                return true;
             } catch (Exception e) {
                 System.out.println("Error: " + e);
+                return false;
             }
         }
+        return false;
+    }
+
+    @RabbitListener(queues = "ite5year.queue")
+    public void receivedMessage(RabbitMessage rabbitMessage) {
+        logger.info("Received Message From RabbitMQ: " + rabbitMessage);
+        this.sendToEmail(rabbitMessage);
     }
 }

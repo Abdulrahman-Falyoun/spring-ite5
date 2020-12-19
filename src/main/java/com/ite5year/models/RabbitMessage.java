@@ -11,6 +11,8 @@ public class RabbitMessage {
     private String email;
     private String content;
     private String date;
+    private String fileName;
+
 
     public RabbitMessage(){}
     public RabbitMessage(String email, String content, String date) {
@@ -42,6 +44,14 @@ public class RabbitMessage {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     @Override
