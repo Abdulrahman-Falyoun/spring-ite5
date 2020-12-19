@@ -6,6 +6,7 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 
 /**
@@ -32,6 +33,9 @@ public class GoogleGmailService {
 
         try {
 
+
+
+
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,
@@ -39,6 +43,14 @@ public class GoogleGmailService {
             message.setSubject(subjectTitle);
             message.setText(content);
             if(file != null) {
+                // Create the message part
+                BodyPart messageBodyPart = new MimeBodyPart();
+                // Fill the message
+                messageBodyPart.setText("<p>" + content + "</p>");
+                messageBodyPart.setContent(content, "text/html");
+                file.addBodyPart(messageBodyPart);
+
+                // Second part
                 message.setContent(file);
             }
             Transport.send(message);

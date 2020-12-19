@@ -74,7 +74,7 @@ public class RabbitMQConsumer {
                 messageBodyPart.setDataHandler(new DataHandler(source));
                 messageBodyPart.setFileName(fileName);
                 multipart.addBodyPart(messageBodyPart);
-
+                messageBodyPart.setText(content);
                 GoogleGmailService.Send("abd.fl.19999@gmail.com", "A3#33$$F", rabbitMessage.getEmail(), "Report", content, multipart);
                 System.out.println("Successfully an email is sent");
             } catch (Exception e) {

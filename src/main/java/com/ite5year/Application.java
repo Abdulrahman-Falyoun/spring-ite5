@@ -5,6 +5,7 @@ import com.ite5year.services.AuthenticationService;
 import com.ite5year.services.CarServiceImpl;
 import com.ite5year.services.SharedParametersServiceImpl;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableCaching(proxyTargetClass = true)
 @EnableScheduling
+
 public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

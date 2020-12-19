@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
@@ -40,7 +41,7 @@ public class ExportDataTest {
     public void testGeneratingReportForSoldCarInAMonth() {
         RabbitMessage rabbitMessage = new RabbitMessage();
         rabbitMessage.setContent("This is a dummy content for a rabbit message and only for testing purposes");
-        rabbitMessage.setDate("2020-01-08 12:30:00");
+        rabbitMessage.setDate("2020-12-08 12:30:00");
         rabbitMessage.setEmail("abdulrahman-falyoun@outlook.com");
         ResponseEntity<RabbitMessage> postResponse = restTemplate.postForEntity(getRootUrl() + "/cars/report", rabbitMessage, RabbitMessage.class);
         System.out.println(postResponse);
@@ -49,5 +50,13 @@ public class ExportDataTest {
         assertNotNull(postResponse.getBody());
     }
 
+
+    @Test
+    public void testGeneratingReportForSoldCarInAMonthFromFile() {
+        RabbitMessage rabbitMessage = new RabbitMessage();
+        rabbitMessage.setContent("This is a dummy content for a rabbit message and only for testing purposes");
+        rabbitMessage.setDate("2020-01-08 12:30:00");
+        rabbitMessage.setEmail("abdulrahman-falyoun@outlook.com");
+    }
 
 }

@@ -21,7 +21,25 @@
   <component name="ChangeListManager">
     <list default="true" id="0a82335f-83ba-4463-b649-27b253b81f3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/optimisticlock/OptimisticLockProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/optimisticlock/OptimisticLockProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/configuration/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/configuration/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/authentication/handlers/JWTAuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/controllers/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/messagingrabbitmq/RabbitMQConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/messagingrabbitmq/RabbitMQConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ite5year/services/GoogleGmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ite5year/services/GoogleGmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ite5year/integration/ExportDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ite5year/integration/ExportDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ite5year/integration/RestTemplateHeaderModifierInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ite5year/integration/RestTemplateHeaderModifierInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sto1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sto1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/configuration/WebSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/configuration/WebSecurity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JWTAuthorizationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/authentication/handlers/JWTAuthorizationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/controllers/CarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/messagingrabbitmq/RabbitMQConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/messagingrabbitmq/RabbitMQConsumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/optimisticlock/OptimisticLockProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ite5year/services/GoogleGmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ite5year/services/GoogleGmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ite5year/integration/ExportDataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ite5year/integration/ExportDataTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ite5year/integration/RestTemplateHeaderModifierInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ite5year/integration/RestTemplateHeaderModifierInterceptor.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +90,7 @@
       <recent name="C:\dev\spring\gs-spring-boot\complete\src\main\java\com\ite5year\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="JUnit.ExportDataTest.testGeneratingReportForSoldCarInAMonth">
     <configuration name="CarControllerIntegrationTest.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spring-boot" />
       <extension name="coverage">
@@ -161,8 +179,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ExportDataTest" />
         <item itemvalue="JUnit.ExportDataTest.testGeneratingReportForSoldCarInAMonth" />
+        <item itemvalue="JUnit.ExportDataTest" />
         <item itemvalue="JUnit.CarControllerIntegrationTest.contextLoads" />
         <item itemvalue="JUnit.CarControllerIntegrationTest.testGetCarById" />
         <item itemvalue="JUnit.CarControllerIntegrationTest.testCreateCar" />
@@ -206,7 +224,10 @@
       <workItem from="1608369672264" duration="1796000" />
       <workItem from="1608371503032" duration="1623000" />
       <workItem from="1608373317449" duration="1790000" />
-      <workItem from="1608375145989" duration="491000" />
+      <workItem from="1608375145989" duration="1115000" />
+      <workItem from="1608377936201" duration="1789000" />
+      <workItem from="1608379753286" duration="1803000" />
+      <workItem from="1608381662219" duration="332000" />
     </task>
     <servers />
   </component>
@@ -250,10 +271,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="575" y="464" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608365004054" />
-    <state x="743" y="409" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606571194140">
+    <state x="743" y="409" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1608379411868">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="743" y="409" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1080@0.0.1920.1080" timestamp="1606571194140" />
+    <state x="743" y="409" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1080@0.0.1920.1080" timestamp="1608379411868" />
     <state x="122" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606636914182">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -266,38 +287,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1606979889213" />
-    <state width="1877" height="508" key="GridCell.Tab.0.bottom" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.0.bottom" timestamp="1608381513958">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
-    <state width="1877" height="508" key="GridCell.Tab.0.center" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608381513958" />
+    <state width="1877" height="508" key="GridCell.Tab.0.center" timestamp="1608381513958">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
-    <state width="1877" height="508" key="GridCell.Tab.0.left" timestamp="1608375587714">
+    <state width="1877" height="508" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608381513958" />
+    <state width="1877" height="508" key="GridCell.Tab.0.left" timestamp="1608381513958">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587714" />
-    <state width="1877" height="508" key="GridCell.Tab.0.right" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608381513958" />
+    <state width="1877" height="508" key="GridCell.Tab.0.right" timestamp="1608381513958">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
-    <state width="1877" height="508" key="GridCell.Tab.1.bottom" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608381513958" />
+    <state width="1877" height="508" key="GridCell.Tab.1.bottom" timestamp="1608381497579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
-    <state width="1877" height="508" key="GridCell.Tab.1.center" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608381497579" />
+    <state width="1877" height="508" key="GridCell.Tab.1.center" timestamp="1608381497579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
-    <state width="1877" height="508" key="GridCell.Tab.1.left" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608381497579" />
+    <state width="1877" height="508" key="GridCell.Tab.1.left" timestamp="1608381497579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
-    <state width="1877" height="508" key="GridCell.Tab.1.right" timestamp="1608375587715">
+    <state width="1877" height="508" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608381497579" />
+    <state width="1877" height="508" key="GridCell.Tab.1.right" timestamp="1608381497579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="508" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608375587715" />
+    <state width="1877" height="508" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608381497579" />
     <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1608365598868">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -310,10 +331,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="731" y="369" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606572456219" />
-    <state x="616" y="250" key="run.anything.popup" timestamp="1608374093950">
+    <state x="616" y="250" key="run.anything.popup" timestamp="1608380672906">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1608374093950" />
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1608380672906" />
     <state x="616" y="192" width="672" height="676" key="search.everywhere.popup" timestamp="1608369725421">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

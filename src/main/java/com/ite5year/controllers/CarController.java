@@ -239,6 +239,7 @@ public class CarController {
 
     @PostMapping("/report")
     public RabbitMessage generateReportForCars(@RequestBody RabbitMessage rabbitMessage) {
+        System.out.println(rabbitMessage);
         return rabbitMQSender.send(rabbitMessage);
     }
 
