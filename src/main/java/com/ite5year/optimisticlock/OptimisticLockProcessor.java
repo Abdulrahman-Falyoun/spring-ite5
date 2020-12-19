@@ -54,8 +54,6 @@ public class OptimisticLockProcessor implements BeanPostProcessor {
                                     "select version from " + inputDataObject.getTableName() + " where id = ?",
                                     Long.class, inputDataObject.getId());
 
-                            System.out.println("databaseVersion: " + databaseVersion);
-                            System.out.println("inputDataObject.getVersion(): " + inputDataObject.getVersion());
 
                             // If the versions match, we're good to save
                             // Bump up the version
@@ -67,12 +65,6 @@ public class OptimisticLockProcessor implements BeanPostProcessor {
                                         + " where id = ?";
                                 jdbcTemplate.update(stmt, newVersion, inputDataObject.getId());
 
-                                databaseVersion = jdbcTemplate.queryForObject(
-                                        "select version from " + inputDataObject.getTableName() + " where id = ?",
-                                        Long.class, inputDataObject.getId());
-
-                                System.out.println("databaseVersion second: " + databaseVersion);
-                                System.out.println("inputDataObject.getVersion() second: " + inputDataObject.getVersion());
                             }
                             else {
                                 // Here the versions dont match, indicating someone else has saved before us.
