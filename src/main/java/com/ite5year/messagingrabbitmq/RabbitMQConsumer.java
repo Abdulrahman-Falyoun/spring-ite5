@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,18 +41,27 @@ public class RabbitMQConsumer {
         String sellingDate = rabbitMessage.getDate();
         System.out.println("sellingDate: " + sellingDate);
         if(!sellingDate.equals("")) {
-            final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            final LocalDateTime dt = LocalDateTime.parse(sellingDate, formatter);
-            List<Car> cars = carService.findAllSoldCardByDate(dt);
-            System.out.println("Cars: " + cars);
-            String content = rabbitMessage.getContent();
-            System.out.println("content: " + content);
-            try {
 
+            try {
+                final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                final LocalDateTime dt = LocalDateTime.parse(sellingDate, formatter);
+                System.out.println(dt);
+                System.out.println("Getting cars........");
+                List<Car> cars = carService.findAllSoldCardByDate(dt);
+                System.out.println("Cars: " + cars);
+                String content = rabbitMessage.getContent();
+                System.out.println("content: " + content);
                 FileWriter writer = new FileWriter("sto1.csv");
-                String collect = cars.stream().map(Car::getName).collect(Collectors.joining(","));
-                System.out.println(collect);
-                writer.write(collect);
+                StringBuilder stringBuilder = new StringBuilder();
+
+                String[] headers = {"carId", "carName", "dateOfSale", "ownerName"};
+                stringBuilder.append(Arrays.stream(headers).collect(Collectors.joining(",")));
+                stringBuilder.append('\n');
+                cars.forEach(car -> {
+                    String line = car.getId() + "," + car.getName() + "," + car.getDateOfSale().toString() + "," + car.getPayerName();
+                    stringBuilder.append(line).append('\n');
+                });
+                writer.write(stringBuilder.toString());
                 writer.close();
 
 
@@ -68,7 +78,7 @@ public class RabbitMQConsumer {
                 GoogleGmailService.Send("abd.fl.19999@gmail.com", "A3#33$$F", rabbitMessage.getEmail(), "Report", content, multipart);
                 System.out.println("Successfully an email is sent");
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error: " + e);
             }
         }
     }

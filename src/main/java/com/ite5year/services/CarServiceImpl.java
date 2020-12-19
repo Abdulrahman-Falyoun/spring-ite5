@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -61,10 +62,13 @@ public class CarServiceImpl implements CarService {
         List<Car> res = new ArrayList<>();
         for(Car car: cars) {
             Date carDate = car.getDateOfSale();
-            LocalDateTime ldtCar = LocalDateTime.from(carDate.toInstant());
-            if(ldtCar.getYear() == date.getYear()) {
-                if(ldtCar.getMonthValue() <= date.getMonthValue() && ldtCar.getMonthValue() > (date.getMonthValue() - 1)) {
-                    res.add(car);
+            if(carDate != null) {
+                Instant instant = carDate.toInstant();
+                LocalDateTime ldtCar = LocalDateTime.from(instant.atZone(ZoneId.of("UTC")));
+                if(ldtCar.getYear() == date.getYear()) {
+                    if(ldtCar.getMonthValue() <= date.getMonthValue() && ldtCar.getMonthValue() > (date.getMonthValue() - 1)) {
+                        res.add(car);
+                    }
                 }
             }
         }
