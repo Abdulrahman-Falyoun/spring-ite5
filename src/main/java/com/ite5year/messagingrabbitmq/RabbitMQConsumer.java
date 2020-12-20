@@ -45,16 +45,16 @@ public class RabbitMQConsumer {
                 System.out.println("Getting cars........");
                 List<Car> cars = carService.findAllSoldCardByDate(dt);
                 System.out.println("Cars: " + cars);
-                String content = rabbitMessage.getContent();
-                System.out.println("content: " + content);
                 FileWriter writer = new FileWriter("sto1.csv");
                 StringBuilder stringBuilder = new StringBuilder();
-
                 String[] headers = {"carId", "carName", "dateOfSale", "ownerName"};
                 stringBuilder.append(String.join(",", headers));
                 stringBuilder.append('\n');
                 cars.forEach(car -> {
-                    String line = car.getId() + "," + car.getName() + "," + car.getDateOfSale().toString() + "," + car.getPayerName();
+                    String line = car.getId() + ","
+                            + car.getName() + ","
+                            + car.getDateOfSale().toString() + ","
+                            + car.getPayerName();
                     stringBuilder.append(line).append('\n');
                 });
                 writer.write(stringBuilder.toString());
@@ -64,13 +64,17 @@ public class RabbitMQConsumer {
                 File file = new File(rabbitMessage.getFileName());
                 MimeBodyPart messageBodyPart = new MimeBodyPart();
                 Multipart multipart = new MimeMultipart();
-                String fileNameInEmail = "cars.csv";
                 FileDataSource source = new FileDataSource(file);
                 messageBodyPart.setDataHandler(new DataHandler(source));
-                messageBodyPart.setFileName(fileNameInEmail);
+                messageBodyPart.setFileName(rabbitMessage.getFileName());
                 multipart.addBodyPart(messageBodyPart);
-                messageBodyPart.setText(content);
-                GoogleGmailService.Send("abd.fl.19999@gmail.com", "A3#33$$F", rabbitMessage.getEmail(), "Report", content, multipart);
+                GoogleGmailService.Send(
+                        "abd.fl.19999@gmail.com",
+                        "A3#33$$F",
+                        rabbitMessage.getEmail(),
+                        "Report",
+                        rabbitMessage.getContent(), multipart);
+
                 System.out.println("Successfully an email is sent");
                 return true;
             } catch (Exception e) {
