@@ -19,6 +19,17 @@ public class Logs {
     private String doerEmail;
     private String targetName;
 
+    public Logs() {
+    }
+
+    public Logs(Date createdAt, String processName, String doerName, String doerEmail, String targetName) {
+        this.createdAt = createdAt;
+        this.processName = processName;
+        this.doerName = doerName;
+        this.doerEmail = doerEmail;
+        this.targetName = targetName;
+    }
+
     public Long getId() {
         return id;
     }

@@ -7,7 +7,9 @@ import com.ite5year.models.*;
 import com.ite5year.payload.exceptions.ResourceNotFoundException;
 import com.ite5year.repositories.ApplicationUserRepository;
 import com.ite5year.repositories.CarRepository;
+import com.ite5year.repositories.LogsRepository;
 import com.ite5year.services.*;
+import com.ite5year.utils.GlobalOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheEvict;
@@ -24,10 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static com.ite5year.utils.GlobalConstants.BASE_URL;
 
@@ -45,12 +44,17 @@ public class CarController {
     private AuthenticationService authenticationService;
     private ApplicationUserDetailsServiceImpl applicationUserDetailsService;
     private ApplicationUserRepository applicationUserRepository;
+    private LogsRepository logsRepository;
 
     @Autowired
     public void setApplicationUserRepository(ApplicationUserRepository applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
     }
 
+    @Autowired
+    public void setLogsRepository(LogsRepository logsRepository) {
+        this.logsRepository = logsRepository;
+    }
 
     @Autowired
     public void setApplicationUserDetailsService(ApplicationUserDetailsServiceImpl applicationUserDetailsService) {
@@ -100,8 +104,17 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
+
+    private void addLog(String processName, String target) {
+        ApplicationUser user = applicationUserDetailsService.currentUser()
+                .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
+        Logs logs = new Logs(new Date(), processName, user.getUsername(), user.getEmail(), target);
+        logsRepository.save(logs);
+    }
+
     @GetMapping
     public List<Car> retrieveAllCars() {
+        addLog(GlobalOperations.GET_CARS, "all_cars");
         return carRepository.findAll();
     }
 
@@ -109,10 +122,11 @@ public class CarController {
     @GetMapping("/{id}")
     @Cacheable(value = "cars", key = "#id")
     public Car retrieveCarById(@PathVariable long id) throws ResourceNotFoundException {
-        Car car = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
-        return car;
+        addLog(GlobalOperations.GET_CAR, String.valueOf(id));
+        return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
 
     }
+
 
 
     @DeleteMapping("/{id}")
@@ -120,7 +134,11 @@ public class CarController {
     public Map<String, Boolean> deleteCar(@PathVariable long id) throws ResourceNotFoundException {
         Car car = carRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found for this id :: " + id));
+
+
         carRepository.delete(car);
+        addLog(GlobalOperations.DELETE_CAR, car.getId().toString());
+
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
@@ -152,6 +170,8 @@ public class CarController {
                 .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
 
         car.setOwner(user);
+        addLog(GlobalOperations.ADD_CAR, car.getId().toString());
+
         return carRepository.save(car);
     }
 
@@ -163,6 +183,7 @@ public class CarController {
         if (car.getDateOfSale() != null || car.getPayerName() != null) {
             throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName() + "  when you're creating the car");
         }
+        addLog(GlobalOperations.ADD_CAR, car.getId().toString());
         return carDao.saveCarByJDBC(car);
     }
 
@@ -179,6 +200,8 @@ public class CarController {
         car.setName(updatedCar.getName());
 
         final Car responseCar = carRepository.save(car);
+        addLog(GlobalOperations.UPDATE_CAR, responseCar.getId().toString());
+
         return ResponseEntity.ok(responseCar);
     }
 
@@ -208,11 +231,13 @@ public class CarController {
         if(counter == 0) pr = 30;
         else pr = 10;
         counter++;
+        addLog(GlobalOperations.PURCHASE_CAR, car.getId().toString());
         return ResponseEntity.ok(carDao.updateCarByJDBC(car, pr));
     }
 
     @PutMapping("/purchase/{id}")
     public ResponseEntity<Object> purchaseCar(@RequestBody PurchaseCarObject purchaseCarObject, @PathVariable long id) {
+        addLog(GlobalOperations.PURCHASE_CAR, String.valueOf(id));
         return carService.purchaseCar(id, purchaseCarObject);
     }
 
@@ -220,6 +245,7 @@ public class CarController {
     @GetMapping("/un-sold")
     public @ResponseBody
     List<Car> getAllUnSoldCars() {
+        addLog(GlobalOperations.GET_UN_SOLD_CARS, "un_sold_cars");
         return carService.findAllUnSoldCar();
     }
 
@@ -229,6 +255,7 @@ public class CarController {
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         final LocalDateTime dt = LocalDateTime.parse(sellingDate, formatter);
         try {
+            addLog(GlobalOperations.GET_SOLD_CARS_IN_MONTH, sellingDate);
             return carService.findAllSoldCardByDate(dt);
         } catch (Exception e) {
             System.out.println("Exc: " + e);
@@ -240,12 +267,14 @@ public class CarController {
     @PostMapping("/report")
     public RabbitMessage generateReportForCars(@RequestBody RabbitMessage rabbitMessage) {
         System.out.println(rabbitMessage);
+        addLog(GlobalOperations.GENERATE_REPORT_FOR_CARS, rabbitMessage.getEmail());
         return rabbitMQSender.send(rabbitMessage);
     }
 
 
     @DeleteMapping("/evict-caching")
     public void evictCaching() {
+        addLog(GlobalOperations.EVICT_CACHING_FOR_CARS, "cached_cars");
         cacheService.evictAllCacheValues("cars");
     }
 }
