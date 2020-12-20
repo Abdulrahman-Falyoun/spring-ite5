@@ -5,6 +5,8 @@ import com.ite5year.models.*;
 import com.ite5year.optimisticlock.OptimisticallyLocked;
 import com.ite5year.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -33,8 +35,10 @@ public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepository carRepository;
-
+    private RedisTemplate redisTemplate;
     private SharedParametersServiceImpl sharedParametersService;
+    private HashOperations<String, String, SharedParam> hashOperations;
+
     public CarServiceImpl(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
@@ -45,6 +49,13 @@ public class CarServiceImpl implements CarService {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
+
+    @Autowired
+    public void setRedisTemplate(RedisTemplate<String, SharedParam> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+        hashOperations = this.redisTemplate.opsForHash();
+    }
 
     @Autowired
     public void setSharedParametersService(SharedParametersServiceImpl sharedParametersService) {

@@ -44,6 +44,7 @@ public class ExportDataTest {
     ApplicationUserDetailsServiceImpl userDetailsService;
     @Autowired
     CarRepository carRepository;
+
     private String getRootUrl() {
         return "http://localhost:4000" + BASE_URL;
     }
@@ -92,7 +93,7 @@ public class ExportDataTest {
             assertTrue(rabbitMQConsumer.sendToEmail(rabbitMessage));
         } catch (Exception e) {
             System.out.println("ERRRRRORORRORORO: " + e);
-            assert(false);
+            assert (false);
         }
 
 
@@ -102,17 +103,14 @@ public class ExportDataTest {
     @Test
     public void testReadingCarsFromJSONAndStoreItInDatabase() {
         try {
-            Gson gson = new Gson();
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("cars.json"));
-            // Car[] cars = JsonHandler.readJsonFromFileAndConvertItToObject("cars.json", Car[].class);
-            Car[] cars = gson.fromJson(bufferedReader, Car[].class);
+            Car[] cars = JsonHandler.readJsonFromFileAndConvertItToObject("cars.json", Car[].class);
             List<Car> carsList = Arrays.asList(cars);
             carsList.forEach(System.out::println);
 
-//            List<Car> savedCars = carRepository.saveAll(carsList);
-//            assertNotNull(savedCars);
-//            assertNotEquals(savedCars.size(),  0);
-//            assertEquals(savedCars.size(), carsList.size());
+            List<Car> savedCars = carRepository.saveAll(carsList);
+            assertNotNull(savedCars);
+            assertNotEquals(savedCars.size(), 0);
+            assertEquals(savedCars.size(), carsList.size());
 
             RabbitMessage rabbitMessage = new RabbitMessage();
             rabbitMessage.setFileName("cars.json");
@@ -124,7 +122,7 @@ public class ExportDataTest {
             assertTrue(sent);
         } catch (Exception e) {
             System.out.println(e);
-            assert(false);
+            assert (false);
         }
     }
 

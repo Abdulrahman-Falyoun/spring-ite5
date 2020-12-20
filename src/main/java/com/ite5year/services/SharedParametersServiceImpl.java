@@ -17,7 +17,7 @@ public class SharedParametersServiceImpl implements SharedParametersService {
     SharedParametersRepository sharedParametersRepository;
     @Autowired
     private RedisTemplate<String, SharedParam> redisTemplate;
-    private HashOperations<String, String, SharedParam> hashOperations; //to access Redis ca
+    private HashOperations<String, String, SharedParam> hashOperations;
 
     public SharedParametersServiceImpl() {
     }

@@ -13,6 +13,7 @@ import java.util.Date;
 @Table(name = "car")
 public class Car implements VersionedEntity, Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private double price;

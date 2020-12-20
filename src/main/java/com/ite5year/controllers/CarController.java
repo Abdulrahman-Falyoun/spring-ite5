@@ -106,16 +106,23 @@ public class CarController {
 
 
     private void addLog(String processName, String target) {
-        ApplicationUser user = applicationUserDetailsService.currentUser()
-                .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
-        Logs logs = new Logs(new Date(), processName, user.getUsername(), user.getEmail(), target);
-        logsRepository.save(logs);
+        try {
+            ApplicationUser user = applicationUserDetailsService.currentUser()
+                    .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
+            Logs logs = new Logs(new Date(), processName, user.getUsername(), user.getEmail(), target);
+            logsRepository.save(logs);
+        } catch (Exception e) {
+            System.out.println("WOW ERROR: " + e);
+        }
     }
 
     @GetMapping
     public List<Car> retrieveAllCars() {
-        addLog(GlobalOperations.GET_CARS, "all_cars");
-        return carRepository.findAll();
+        System.out.println("TO TEST SEARCH");
+        // addLog(GlobalOperations.GET_CARS, "all_cars");
+        List<Car> cars =  carRepository.findAll();
+        cars.forEach(System.out::println);
+        return cars;
     }
 
 
@@ -166,10 +173,13 @@ public class CarController {
             throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName() + "  when you're creating the car");
         }
 
-        ApplicationUser user = applicationUserDetailsService.currentUser()
-                .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
-
-        car.setOwner(user);
+        try {
+            ApplicationUser user = applicationUserDetailsService.currentUser()
+                    .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
+            car.setOwner(user);
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
         addLog(GlobalOperations.ADD_CAR, car.getId().toString());
 
         return carRepository.save(car);
