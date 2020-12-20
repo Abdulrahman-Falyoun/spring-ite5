@@ -63,7 +63,17 @@ public class SharedParametersServiceImpl implements SharedParametersService {
 
     @Override
     public SharedParam findByKey(String key) {
-        return hashOperations.get("SharedParameters", key);
+        SharedParam sharedParam = hashOperations.get("SharedParameters", key);
+        if(sharedParam == null) {
+            Optional<SharedParam> optionalSharedParam = sharedParametersRepository
+                    .findAll()
+                    .stream()
+                    .filter(sp -> sp.getFieldKey().equals(key))
+                    .findFirst();
+            optionalSharedParam.ifPresent(sp -> hashOperations.put("SharedParameters", key, sp));
+            return optionalSharedParam.get();
+        }
+        return sharedParam;
     }
 
     @Override
