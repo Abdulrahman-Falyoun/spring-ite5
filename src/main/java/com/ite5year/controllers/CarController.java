@@ -112,15 +112,14 @@ public class CarController {
             Logs logs = new Logs(new Date(), processName, user.getUsername(), user.getEmail(), target);
             logsRepository.save(logs);
         } catch (Exception e) {
-            System.out.println("WOW ERROR: " + e);
+            System.out.println("ERROR: " + e);
         }
     }
 
     @GetMapping
     public List<Car> retrieveAllCars() {
-        System.out.println("TO TEST SEARCH");
-        // addLog(GlobalOperations.GET_CARS, "all_cars");
-        List<Car> cars =  carRepository.findAll();
+        addLog(GlobalOperations.GET_CARS, "all_cars");
+        List<Car> cars =  carService.findAll();
         cars.forEach(System.out::println);
         return cars;
     }
@@ -182,7 +181,7 @@ public class CarController {
         }
         addLog(GlobalOperations.ADD_CAR, car.getId().toString());
 
-        return carRepository.save(car);
+        return carService.save(car);
     }
 
 
