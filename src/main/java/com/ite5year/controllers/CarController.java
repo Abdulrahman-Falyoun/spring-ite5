@@ -116,11 +116,22 @@ public class CarController {
         }
     }
 
+    void addDefaultPriceToCars(List<Car> cars) {
+        SharedParam sharedParam = sharedParametersService.findByKey("profitPercentage");
+        if(sharedParam != null) {
+            double defaultPrice = Double.parseDouble(sharedParam.getFieldValue());
+            cars.forEach(car -> {
+                double finalPrice = defaultPrice * car.getPrice();
+                car.setPriceOfSale(finalPrice);
+            });
+        }
+    }
     @GetMapping
     public List<Car> retrieveAllCars() {
         addLog(GlobalOperations.GET_CARS, "all_cars");
         List<Car> cars = carService.findAll();
         cars.forEach(System.out::println);
+        addDefaultPriceToCars(cars);
         System.out.println("Why this is happening...");
         return cars;
     }
