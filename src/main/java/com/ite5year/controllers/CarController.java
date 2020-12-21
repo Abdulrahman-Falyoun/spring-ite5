@@ -119,7 +119,7 @@ public class CarController {
     @GetMapping
     public List<Car> retrieveAllCars() {
         addLog(GlobalOperations.GET_CARS, "all_cars");
-        List<Car> cars =  carService.findAll();
+        List<Car> cars = carService.findAll();
         cars.forEach(System.out::println);
         System.out.println("Why this is happening...");
         return cars;
@@ -133,7 +133,6 @@ public class CarController {
         return carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
 
     }
-
 
 
     @DeleteMapping("/{id}")
@@ -154,7 +153,7 @@ public class CarController {
     private void updateSeatsNumberOfCar(Car car) throws Exception {
         if (car.getSeatsNumber() <= 0) {
             SharedParam sharedParam = sharedParametersService.findByKey("seatsNumber");
-            if(sharedParam != null) {
+            if (sharedParam != null) {
                 String numberOfSeats = sharedParam.getFieldValue();
                 int seatsNumber = Integer.parseInt(numberOfSeats);
                 car.setSeatsNumber(seatsNumber);
@@ -215,9 +214,10 @@ public class CarController {
     }
 
     int counter = 0;
+
     @PutMapping("/purchase/opt")
     public ResponseEntity<Object> purchaseCarWithOptimisticLock(@RequestBody Car car)
-            throws ResourceNotFoundException{
+            throws ResourceNotFoundException {
 //        Car car = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Car with id " + id + " is not found!"));
 //        car.setDateOfSale(purchaseCarObject.getDateOfSale());
 //        car.setPayerName(purchaseCarObject.getPayerName());
@@ -237,7 +237,7 @@ public class CarController {
 //            car.setPriceOfSale(finalPrice);
 //        }
         long pr;
-        if(counter == 0) pr = 30;
+        if (counter == 0) pr = 30;
         else pr = 10;
         counter++;
         addLog(GlobalOperations.PURCHASE_CAR, car.getId().toString());
@@ -285,7 +285,7 @@ public class CarController {
     public ResponseEntity<HashMap> evictCaching() {
         addLog(GlobalOperations.EVICT_CACHING_FOR_CARS, "cached_cars");
         cacheService.evictAllCacheValues("cars");
-        carService.removeCachedCars();
+        // carService.removeCachedCars();
         System.out.println("evicted");
         HashMap<String, Boolean> response = new HashMap<>();
         response.put("evicted", true);

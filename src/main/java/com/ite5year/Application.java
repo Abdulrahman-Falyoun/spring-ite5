@@ -1,5 +1,6 @@
 package com.ite5year;
 
+import com.ite5year.models.Car;
 import com.ite5year.models.SharedParam;
 import com.ite5year.services.AuthenticationService;
 import com.ite5year.services.CarServiceImpl;
@@ -35,6 +36,13 @@ public class Application {
 	@Bean
 	RedisTemplate<String, SharedParam> redisTemplate() {
 		RedisTemplate<String, SharedParam> redisTemplate = new RedisTemplate<>();
+		redisTemplate.setConnectionFactory(jedisConnectionFactory());
+		return redisTemplate;
+	}
+
+	@Bean
+	RedisTemplate<Long, Car> redisTemplateForCars() {
+		RedisTemplate<Long, Car> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(jedisConnectionFactory());
 		return redisTemplate;
 	}

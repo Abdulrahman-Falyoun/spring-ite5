@@ -15,12 +15,6 @@ import java.lang.reflect.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Processor implements optimistic locking on methods that are tagged with
- * the &amp;OptimisticlyLocked annotation.
- * The first argument of the method must be the Entity being saved.
- * The Entity must implement the com.slalom.blog.jdbcexample.VersionedEntity interface.
- */
 @Component
 public class OptimisticLockProcessor implements BeanPostProcessor {
 

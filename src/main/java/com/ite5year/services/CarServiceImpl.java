@@ -38,7 +38,7 @@ public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepository carRepository;
-    private RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplateForCars;
     private SharedParametersServiceImpl sharedParametersService;
     private HashOperations<String, Long, Car> hashOperations;
 
@@ -55,9 +55,9 @@ public class CarServiceImpl implements CarService {
 
 
     @Autowired
-    public void setRedisTemplate(RedisTemplate<String, SharedParam> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-        hashOperations = this.redisTemplate.opsForHash();
+    public void setRedisTemplate(RedisTemplate<Long, Car> redisTemplateForCars) {
+        this.redisTemplateForCars = redisTemplateForCars;
+        hashOperations = this.redisTemplateForCars.opsForHash();
     }
 
     private Map<Long, Car> mergeCarsEntitiesFromDBToRedis() {
