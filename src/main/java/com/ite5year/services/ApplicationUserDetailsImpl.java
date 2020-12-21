@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -35,16 +36,16 @@ public class ApplicationUserDetailsImpl implements UserDetails {
     }
 
     public static ApplicationUserDetailsImpl build(ApplicationUser user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .collect(Collectors.toList());
+        // List<GrantedAuthority> authorities = user.getRoles().stream()
+          //      .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+            //    .collect(Collectors.toList());
 
         return new ApplicationUserDetailsImpl(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
-                authorities);
+                new ArrayList<GrantedAuthority>());
     }
 
     @Override

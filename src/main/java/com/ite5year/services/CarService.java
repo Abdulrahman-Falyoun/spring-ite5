@@ -21,5 +21,5 @@ public interface CarService {
     @Lock(LockModeType.PESSIMISTIC_FORCE_INCREMENT)
     List<Car> findAllSoldCardByDate(LocalDateTime date);
     ResponseEntity<Object> purchaseCar(long carId, PurchaseCarObject purchaseCarObject);
-
+    void removeCachedCars();
 }

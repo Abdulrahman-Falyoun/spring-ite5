@@ -132,7 +132,7 @@ public class AuthController {
             });
         }
 
-        user.setRoles(roles);
+        // user.setRoles(roles);
         userRepository.save(user);
 
         addLog(user.getEmail(), user.getUsername(), GlobalOperations.SIGN_IN, String.valueOf(user.getId()));

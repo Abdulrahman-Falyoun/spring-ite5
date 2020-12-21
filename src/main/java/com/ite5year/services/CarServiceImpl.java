@@ -76,11 +76,16 @@ public class CarServiceImpl implements CarService {
     public List<Car> findAll() {
         try {
             Map<Long, Car> cachedCars = hashOperations.entries("Cars");
-            if (cachedCars.size() > 0) return new ArrayList<Car>(cachedCars.values());
-            return new ArrayList<Car>(mergeCarsEntitiesFromDBToRedis().values());
+            System.out.println(cachedCars);
+            if (cachedCars != null && cachedCars.size() > 0) return new ArrayList<Car>(cachedCars.values());
+            System.out.println("returning from db...");
+
+            Map<Long, Car> dbCars = mergeCarsEntitiesFromDBToRedis();
+            if(dbCars != null) return new ArrayList<Car>(dbCars.values());
+            return new ArrayList<>();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
+            System.out.println("Error findAll(): " + e.getMessage());
+            return carRepository.findAll();
         }
     }
 
@@ -111,7 +116,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car save(Car car) {
         Car savedCar = carRepository.save(car);
-        hashOperations.put("Cars", car.getId(), savedCar);
+        hashOperations.put("Cars", savedCar.getId(), savedCar);
         return savedCar;
     }
 
@@ -140,6 +145,11 @@ public class CarServiceImpl implements CarService {
             }
         }
         return res;
+    }
+
+    @Override
+    public void removeCachedCars() {
+        this.hashOperations.delete("Cars");
     }
 
     @Transactional

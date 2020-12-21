@@ -121,6 +121,7 @@ public class CarController {
         addLog(GlobalOperations.GET_CARS, "all_cars");
         List<Car> cars =  carService.findAll();
         cars.forEach(System.out::println);
+        System.out.println("Why this is happening...");
         return cars;
     }
 
@@ -171,7 +172,6 @@ public class CarController {
         if (car.getDateOfSale() != null || car.getPayerName() != null) {
             throw new Exception("Cannot provide " + car.getDateOfSale() + " or " + car.getPayerName() + "  when you're creating the car");
         }
-
         try {
             ApplicationUser user = applicationUserDetailsService.currentUser()
                     .orElseThrow(() -> new UsernameNotFoundException("You need to login again"));
@@ -179,9 +179,9 @@ public class CarController {
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
-        addLog(GlobalOperations.ADD_CAR, car.getId().toString());
-
-        return carService.save(car);
+        Car savedCar = carService.save(car);
+        addLog(GlobalOperations.ADD_CAR, String.valueOf(savedCar.getId()));
+        return savedCar;
     }
 
 
@@ -282,8 +282,13 @@ public class CarController {
 
 
     @DeleteMapping("/evict-caching")
-    public void evictCaching() {
+    public ResponseEntity<HashMap> evictCaching() {
         addLog(GlobalOperations.EVICT_CACHING_FOR_CARS, "cached_cars");
         cacheService.evictAllCacheValues("cars");
+        carService.removeCachedCars();
+        System.out.println("evicted");
+        HashMap<String, Boolean> response = new HashMap<>();
+        response.put("evicted", true);
+        return ResponseEntity.ok(response);
     }
 }
